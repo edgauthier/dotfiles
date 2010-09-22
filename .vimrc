@@ -1,5 +1,28 @@
-" set no compatibility mode
+" disable vi compatibility mode
 set nocompatible
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Tab, shifting & indent settings
+
+" number of spaces a tab equals
+set tabstop=2
+" set shiftwidth for number of space used when autoindenting
+set shiftwidth=2
+" set backspace to remove equivalent number of spaces
+set softtabstop=2
+" round shifting to nearset shiftwidth
+set shiftround
+" set spaces to be inserted instead of tabs
+set expandtab
+
+" keeps indent from previous line
+set autoindent
+" use c indenting
+set cindent
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " make sure the ruler is on
 set ruler
 " make sure a status line is always there
@@ -20,20 +43,6 @@ set ignorecase
 set smartcase
 " turn on highlighting when searching
 set hlsearch
-" number of spaces a tab equals
-set tabstop=2
-" set shiftwidth for number of space used when autoindenting
-set shiftwidth=2
-" set tabs to be inserted instead of spaces
-set expandtab
-" keeps indent from previous line
-set autoindent
-" inserts a tab based on shiftwidth
-set smarttab
-" round shifting to nearset shiftwidth
-set shiftround
-" use c indenting
-set cindent
 " better colors on light background
 set background=dark
 " no error bell
