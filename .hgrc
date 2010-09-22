@@ -1,0 +1,6 @@
+[ui]
+username = Ed Gauthier <ed@egauthier.net>
+ignore=~/.hgignore-global
+
+[extensions]
+fetch=
