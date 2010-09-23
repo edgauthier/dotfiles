@@ -1,70 +1,104 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " disable vi compatibility mode
 set nocompatible
+let mapleader=","
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Tab, shifting & indent settings
 
-" number of spaces a tab equals
 set tabstop=2
-" set shiftwidth for number of space used when autoindenting
 set shiftwidth=2
-" set backspace to remove equivalent number of spaces
 set softtabstop=2
-" round shifting to nearset shiftwidth
 set shiftround
-" set spaces to be inserted instead of tabs
 set expandtab
-
-" keeps indent from previous line
 set autoindent
-" use c indenting
-set cindent
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Other usefull settings
 
-" make sure the ruler is on
-set ruler
-" make sure a status line is always there
-set laststatus=2
-" enable command completion
+set encoding=utf-8
+set scrolloff=3
+set showmode
+set showcmd
+set hidden "do I really want this?
 set wildmenu
-" enable line numbering
+set wildmode=list:longest
+set visualbell
+"set noerrorbells
+set ttyfast
+set ruler
+set laststatus=2
 set number
+set backspace=indent,eol,start
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Searching
+
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+set gdefault
+set hlsearch
+" Regexp changes
+nnoremap / /\v
+vnoremap / /\v
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text width
+set wrap
+set textwidth=79
+set formatoptions=cqrnlb1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mappings
+
+" clear search highlighting
+map <leader><space> :noh<cr>
+
+"   Edit another file in the same directory as the current file
+"   uses expression to extract path from current file's path
+"  (thanks Douglas Potts)
+if has("unix")
+    map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+else
+    map <leader>e :e <C-R>=expand("%:p:h") . "\\" <CR>
+endif
+
+" Use tab to jump to matching brackets
+nnoremap <tab> %
+vnoremap <tab> %
+
+" move by screen lines, not file lines
+nnoremap j gj
+nnoremap k gk
+
+" disable F1 key - turn it into another ESC key
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+" ; works like :
+nnoremap ; :
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" other settings to review/cleanup
+
 " enable the mouse to move windows
 set mouse=a
-" set backspace to wrap to the next line
-set backspace=2
-" incremental searching
-set incsearch
-" ignore case when searching
-set ignorecase
-" smartcase - all lower ignores case, some upper matches case
-set smartcase
-" turn on highlighting when searching
-set hlsearch
 " better colors on light background
 set background=dark
-" no error bell
-set noerrorbells
-" show matching bracket
-set showmatch
 " syntax highlighting on
 syntax enable
-" show mode
-set showmode
-" Show a command when it's in progress
-set showcmd
 " mappings do not work recursively
 set noremap
 " indent a block of text between { }
 map <F4> my?{%kmzj%j:.,'zs/^.*$/  &/`y 
 " unindent a block of text between { }
 map <F3> my?{%kmzj%j:.,'zs/^  \\|^  //`y
-" used for formating long lines
-set textwidth=70
-" set format options
-set formatoptions=cqrolb
 " splitting of window places new window at right
 set splitright
 " splitting of window places new window below
@@ -83,15 +117,6 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 let g:miniBufExplTabWrap = 1
 let g:miniBufExplUseSingleClick = 1
-
-"   Edit another file in the same directory as the current file
-"   uses expression to extract path from current file's path
-"  (thanks Douglas Potts)
-if has("unix")
-    map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
-else
-    map ,e :e <C-R>=expand("%:p:h") . "\\" <CR>
-endif
 
 " copy text to the windows clipboard
 " don't use until I figure out what to do when deleteing text, etc
