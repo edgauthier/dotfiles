@@ -20,7 +20,6 @@ set encoding=utf-8
 set scrolloff=3
 set showmode
 set showcmd
-set hidden "do I really want this?
 set wildmenu
 set wildmode=list:longest
 set visualbell
@@ -56,6 +55,12 @@ set formatoptions=cqrnlb1
 " clear search highlighting
 map <leader><space> :noh<cr>
 
+" select last pasted block
+nnoremap <leader>v V`]
+
+" edit .vimrc file
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
 "   Edit another file in the same directory as the current file
 "   uses expression to extract path from current file's path
 "  (thanks Douglas Potts)
@@ -64,10 +69,6 @@ if has("unix")
 else
     map <leader>e :e <C-R>=expand("%:p:h") . "\\" <CR>
 endif
-
-" Use tab to jump to matching brackets
-nnoremap <tab> %
-vnoremap <tab> %
 
 " move by screen lines, not file lines
 nnoremap j gj
