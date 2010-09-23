@@ -120,14 +120,6 @@ let g:miniBufExplModSelTarget = 1
 let g:miniBufExplTabWrap = 1
 let g:miniBufExplUseSingleClick = 1
 
-" copy text to the windows clipboard
-" don't use until I figure out what to do when deleteing text, etc
-" overwrites the clipboard...
-"set clipboard=unnamed
-" font
-set guifont=Consolas:h12.00
-set guioptions=begmrLtT
-
 map  :WMToggle
 map  :FirstExplorerWindow
 map  :BottomExplorerWindow
