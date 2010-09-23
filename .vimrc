@@ -82,7 +82,8 @@ vnoremap <F1> <ESC>
 " ; works like :
 nnoremap ; :
 
-
+" map jj to <esc> in insert mode
+inoremap jj <ESC>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
