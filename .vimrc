@@ -49,6 +49,7 @@ set wrap
 set textwidth=79
 set formatoptions=cqrnlb1
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 
@@ -60,14 +61,15 @@ nnoremap <leader>v V`]
 
 " edit .vimrc file
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>eg <C-w><C-v><C-l>:e $MYGVIMRC<cr>
 
 "   Edit another file in the same directory as the current file
 "   uses expression to extract path from current file's path
 "  (thanks Douglas Potts)
 if has("unix")
-    map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+    map <leader>ee :e <C-R>=expand("%:p:h") . "/" <CR>
 else
-    map <leader>e :e <C-R>=expand("%:p:h") . "\\" <CR>
+    map <leader>ee :e <C-R>=expand("%:p:h") . "\\" <CR>
 endif
 
 " move by screen lines, not file lines
@@ -79,12 +81,18 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" ; works like :
-nnoremap ; :
-
 " map jj to <esc> in insert mode
 inoremap jj <ESC>
 
+" ; works like :
+nnoremap ; :
+
+" window control
+nnoremap <leader>w <C-w><C-v>l
+
+" Tab mappings
+map <Leader>tc :tabclose
+map <Leader>tn :tabnew
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " other settings to review/cleanup
@@ -124,11 +132,6 @@ map  :WMToggle
 map  :FirstExplorerWindow
 map  :BottomExplorerWindow
 
-" Tab mappings
-" close tab
-map <Leader>c :tabclose
-" create a new tab
-map <Leader>t :tabnew
 " edit file in new tab
 
 " jump to current window/tab if buffer is already open
