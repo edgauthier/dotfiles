@@ -1,9 +1,7 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " disable vi compatibility mode
 set nocompatible
 let mapleader=","
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab, shifting & indent settings
 
 set tabstop=2
@@ -13,7 +11,6 @@ set shiftround
 set expandtab
 set autoindent
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other usefull settings
 
 set encoding=utf-8
@@ -30,7 +27,6 @@ set laststatus=2
 set number
 set backspace=indent,eol,start
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
 
 set incsearch
@@ -43,14 +39,12 @@ set hlsearch
 nnoremap / /\v
 vnoremap / /\v
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text width
 set wrap
 set textwidth=79
 set formatoptions=cqrnlb1
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 
 " clear search highlighting
@@ -94,7 +88,6 @@ nnoremap <leader>w <C-w><C-v>l
 map <Leader>tc :tabclose
 map <Leader>tn :tabnew
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " other settings to review/cleanup
 
 " enable the mouse to move windows
