@@ -83,6 +83,10 @@ nnoremap ; :
 
 " window control
 nnoremap <leader>w <C-w><C-v>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Tab mappings
 map <Leader>tc :tabclose
