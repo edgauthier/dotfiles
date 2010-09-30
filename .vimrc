@@ -33,6 +33,7 @@ syntax enable
 filetype on
 filetype plugin on
 filetype indent on
+set shortmess=atI
 
 " show whitespace
 set listchars=tab:>-,trail:·,eol:$
