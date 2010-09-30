@@ -26,6 +26,13 @@ set ruler
 set laststatus=2
 set number
 set backspace=indent,eol,start
+set hidden
+set history=1000
+set title
+syntax enable
+filetype on
+filetype plugin on
+filetype indent on
 
 " Searching
 
@@ -44,11 +51,13 @@ set wrap
 set textwidth=79
 set formatoptions=cqrnlb1
 
+" better % matching
+runtime macros/matchit.vim
 
 " Mappings
 
 " clear search highlighting
-map <leader><space> :noh<cr>
+nnoremap <silent> <leader><space> :noh<cr>
 
 " select last pasted block
 nnoremap <leader>v V`]
@@ -67,8 +76,8 @@ else
 endif
 
 " move by screen lines, not file lines
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 " disable F1 key - turn it into another ESC key
 inoremap <F1> <ESC>
@@ -99,7 +108,6 @@ set mouse=a
 " better colors on light background
 set background=dark
 " syntax highlighting on
-syntax enable
 " mappings do not work recursively
 set noremap
 " indent a block of text between { }
