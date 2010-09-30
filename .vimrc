@@ -42,6 +42,8 @@ set smartcase
 set showmatch
 set gdefault
 set hlsearch
+" clear search highlighting
+nnoremap <silent> <leader><space> :noh<cr>
 " Regexp changes
 nnoremap / /\v
 vnoremap / /\v
@@ -55,9 +57,6 @@ set formatoptions=cqrnlb1
 runtime macros/matchit.vim
 
 " Mappings
-
-" clear search highlighting
-nnoremap <silent> <leader><space> :noh<cr>
 
 " select last pasted block
 nnoremap <leader>v V`]
@@ -91,6 +90,8 @@ inoremap jj <ESC>
 nnoremap ; :
 
 " window control
+set splitright
+set splitbelow
 nnoremap <leader>w <C-w><C-v>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -114,10 +115,6 @@ set noremap
 map <F4> my?{%kmzj%j:.,'zs/^.*$/  &/`y 
 " unindent a block of text between { }
 map <F3> my?{%kmzj%j:.,'zs/^  \\|^  //`y
-" splitting of window places new window at right
-set splitright
-" splitting of window places new window below
-set splitbelow
 " turn on folding
 set foldenable
 " set syntax folding
