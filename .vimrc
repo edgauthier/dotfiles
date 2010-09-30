@@ -34,6 +34,10 @@ filetype on
 filetype plugin on
 filetype indent on
 
+" show whitespace
+set listchars=tab:>-,trail:·,eol:$
+nmap <silent> <leader>s :set nolist!<cr>
+
 " Searching
 
 set incsearch
