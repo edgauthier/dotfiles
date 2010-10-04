@@ -4,3 +4,4 @@ ignore=~/.hgignore-global
 
 [extensions]
 fetch=
+hgext.convert=

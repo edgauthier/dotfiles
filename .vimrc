@@ -29,6 +29,7 @@ set backspace=indent,eol,start
 set hidden
 set history=1000
 set title
+set titleold=""
 syntax enable
 filetype on
 filetype plugin on
