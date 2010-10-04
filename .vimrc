@@ -114,8 +114,6 @@ set mouse=a
 " better colors on light background
 set background=dark
 " syntax highlighting on
-" mappings do not work recursively
-set noremap
 " indent a block of text between { }
 map <F4> my?{%kmzj%j:.,'zs/^.*$/  &/`y 
 " unindent a block of text between { }
