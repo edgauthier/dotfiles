@@ -84,11 +84,6 @@ endif
 "nnoremap j gj
 "nnoremap k gk
 
-" disable F1 key - turn it into another ESC key
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
 " map jj to <esc> in insert mode
 inoremap jj <ESC>
 
