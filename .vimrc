@@ -141,3 +141,6 @@ map  :BottomExplorerWindow
 
 " Abbreviations
 ab pfn /*/function () {}<Up><Right><Right><Right><Right><Right><Right><Right><Right><BS>
+
+nnoremap <leader>lpu /\vend.*customO<c-r>*<esc>dd
+
