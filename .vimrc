@@ -62,6 +62,11 @@ set formatoptions=cqrnlb1
 " better % matching
 runtime macros/matchit.vim
 
+" folding
+set foldenable
+set foldmethod=indent
+set foldlevel=100
+
 " Mappings
 
 " select last pasted block
@@ -114,10 +119,6 @@ set background=dark
 map <F4> my?{%kmzj%j:.,'zs/^.*$/  &/`y 
 " unindent a block of text between { }
 map <F3> my?{%kmzj%j:.,'zs/^  \\|^  //`y
-" turn on folding
-set foldenable
-" set syntax folding
-set foldmethod=indent
 " html/xml comment
 map <F5> mzI<!-- A -->`z5l
 " html/xml uncomment
