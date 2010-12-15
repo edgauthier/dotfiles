@@ -14,6 +14,8 @@ set autoindent
 " Other usefull settings
 
 set encoding=utf-8
+" prefer unix fileformatting over dos, even on Windows
+set fileformats=unix,dos
 set scrolloff=3
 set showmode
 set showcmd
