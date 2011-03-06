@@ -5,3 +5,9 @@ ignore=~/.hgignore-global
 [extensions]
 fetch=
 hgext.convert=
+
+[web]
+cacerts = 
+
+[hostfingerprints]
+hg.egauthier.net = a8:3b:d9:e2:61:de:6c:a1:28:fd:b8:65:99:61:00:29:e0:eb:c1:fd
