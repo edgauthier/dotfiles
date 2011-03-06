@@ -26,7 +26,11 @@ set noerrorbells
 set ttyfast
 set ruler
 set laststatus=2
-set number
+if version >= 703
+    set relativenumber
+else
+    set number
+endif
 set backspace=indent,eol,start
 set hidden
 set history=1000
