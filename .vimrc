@@ -41,6 +41,7 @@ filetype on
 filetype plugin on
 filetype indent on
 set shortmess=atI
+set nojoinspaces
 
 " show whitespace
 set listchars=tab:>-,trail:·,eol:$
