@@ -1,7 +1,7 @@
-PYTHONPATH=~/python
+PYTHONPATH=~/dev/python
 export PYTHONPATH
 
-PATH=$PATH:~/bin:~/python
+PATH=/usr/local/bin:~/bin:~/dev/python:$PATH
 export PATH
 
 EDITOR=/usr/bin/vim
