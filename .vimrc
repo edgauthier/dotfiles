@@ -121,8 +121,8 @@ map <Leader>tn :tabnew
 set mouse=a
 " better colors on light background
 set background=dark
-let g:solarized_termcolors=16
-colorscheme solarized
+"let g:solarized_termcolors=16
+"colorscheme solarized
 " syntax highlighting on
 " indent a block of text between { }
 map <F4> my?{%kmzj%j:.,'zs/^.*$/  &/`y 
