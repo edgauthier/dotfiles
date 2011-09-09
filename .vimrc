@@ -119,7 +119,6 @@ map <Leader>tn :tabnew
 
 " enable the mouse to move windows
 set mouse=a
-" better colors on light background
 set background=dark
 "let g:solarized_termcolors=16
 "colorscheme solarized
