@@ -120,9 +120,8 @@ map <Leader>tn :tabnew
 " enable the mouse to move windows
 set mouse=a
 set background=dark
-"let g:solarized_termcolors=16
-"colorscheme solarized
-" syntax highlighting on
+colorscheme solarized
+let g:solarized_termcolors=16
 " indent a block of text between { }
 map <F4> my?{%kmzj%j:.,'zs/^.*$/  &/`y 
 " unindent a block of text between { }
