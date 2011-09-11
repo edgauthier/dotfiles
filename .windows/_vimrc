@@ -1,0 +1,6 @@
+let $DOTFILES = 'C:\Users\egauthi1\dotfiles'
+let $MYRUNTIME = $DOTFILES . '\.vim'
+set runtimepath^=$MYRUNTIME
+
+source $DOTFILES\.vimrc
+let $MYVIMRC = $DOTFILES . '\.vimrc'
