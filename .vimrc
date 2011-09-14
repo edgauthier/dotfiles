@@ -45,7 +45,7 @@ set nojoinspaces
 
 " show whitespace
 set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>s :set nolist!<cr>
+nmap <silent> <leader>ws :set nolist!<cr>
 
 " Searching
 
@@ -107,7 +107,8 @@ nnoremap ; :
 " window control
 set splitright
 set splitbelow
-nnoremap <leader>w <C-w><C-v>l
+nnoremap <leader>wv <C-w><C-v>l
+nnoremap <leader>wh <C-w><C-n>j
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
