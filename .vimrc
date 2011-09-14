@@ -117,13 +117,17 @@ nnoremap <C-l> <C-w>l
 map <Leader>tc :tabclose
 map <Leader>tn :tabnew
 
+" Color settings
+set background=dark
+let g:solarized_termcolors=16
+colorscheme solarized
+map <leader>cl :let g:solarized_style="light"<CR>:colorscheme solarized<CR>
+map <leader>cd :let g:solarized_style="dark"<CR>:colorscheme solarized<CR>
+
 " other settings to review/cleanup
 
 " enable the mouse to move windows
 set mouse=a
-set background=dark
-let g:solarized_termcolors=16
-colorscheme solarized
 " indent a block of text between { }
 map <F4> my?{%kmzj%j:.,'zs/^.*$/  &/`y 
 " unindent a block of text between { }
