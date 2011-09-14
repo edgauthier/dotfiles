@@ -1,2 +1,2 @@
 source C:\Users\egauthi1\dotfiles\.gvimrc
-let $MYGVIMRC = "C:\Users\egauthi1\dotfiles\.gvimrc"
+let $MYGVIMRC = 'C:\Users\egauthi1\dotfiles\.gvimrc'
