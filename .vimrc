@@ -1,6 +1,11 @@
 " disable vi compatibility mode
 set nocompatible
 let mapleader=","
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+" call togglebg to autoload the togglebg plugin
+call togglebg#map("")
 
 " Tab, shifting & indent settings
 
@@ -122,8 +127,9 @@ map <Leader>tn :tabnew
 set background=dark
 let g:solarized_termcolors=16
 colorscheme solarized
-map <leader>cl :let g:solarized_style="light"<CR>:colorscheme solarized<CR>
-map <leader>cd :let g:solarized_style="dark"<CR>:colorscheme solarized<CR>
+map <leader>cl :set background=light<CR>:colorscheme solarized<CR>
+map <leader>cd :set background=dark<CR>:colorscheme solarized<CR>
+map <leader>bg :ToggleBG<CR>
 
 " other settings to review/cleanup
 
