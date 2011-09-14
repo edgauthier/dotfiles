@@ -82,6 +82,8 @@ nnoremap <leader>v V`]
 " edit .vimrc file
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <leader>eg <C-w><C-v><C-l>:e $MYGVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sg :source $MYGVIMRC<cr>
 
 "   Edit another file in the same directory as the current file
 "   uses expression to extract path from current file's path
