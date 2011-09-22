@@ -79,7 +79,12 @@ set foldenable
 set foldmethod=indent
 set foldlevel=100
 
-" Mappings
+" Bubble single lines
+nmap <S-k> [e
+nmap <S-j> ]e
+" Bubble multiple lines
+vmap <S-k> [egv
+vmap <S-j> ]egv
 
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
