@@ -7,3 +7,6 @@
 [submodule ".TerminalColorSchemes/osx-lion-terminal.app-colors-solarized"]
 	path = .TerminalColorSchemes/osx-lion-terminal.app-colors-solarized
 	url = https://github.com/tomislav/osx-lion-terminal.app-colors-solarized.git
+[submodule ".vim/bundle/snipmate.vim"]
+	path = .vim/bundle/snipmate.vim
+	url = https://github.com/msanders/snipmate.vim.git
