@@ -81,8 +81,8 @@ set foldlevel=100
 
 " Mappings
 
-" select last pasted block
-nnoremap <leader>v V`]
+" Visually select the text that was last edited/pasted
+nmap gV `[v`]
 
 " edit .vimrc file
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
