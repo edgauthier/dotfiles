@@ -108,9 +108,6 @@ endif
 "nnoremap j gj
 "nnoremap k gk
 
-" map jj to <esc> in insert mode
-inoremap jj <ESC>
-
 " ; works like :
 nnoremap ; :
 
