@@ -110,6 +110,7 @@ endif
 
 " ; works like :
 nnoremap ; :
+vnoremap ; :
 
 " window control
 set splitright
