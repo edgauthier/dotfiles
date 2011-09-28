@@ -115,18 +115,22 @@ nmap <D-j> gj
 nmap <D-k> gk
 nmap <D-4> g$
 nmap <D-6> g^
+nmap <D-0> g0
 nmap <A-j> gj
 nmap <A-k> gk
 nmap <A-4> g$
 nmap <A-6> g^
+nmap <A-0> g0
 vmap <D-j> gj
 vmap <D-k> gk
 vmap <D-4> g$
 vmap <D-6> g^
+vmap <D-0> g0
 vmap <A-j> gj
 vmap <A-k> gk
 vmap <A-4> g$
 vmap <A-6> g^
+vmap <A-0> g0
 
 " ; works like :
 nnoremap ; :
