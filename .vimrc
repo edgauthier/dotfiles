@@ -69,7 +69,7 @@ vnoremap / /\v
 " Text width
 set wrap
 set textwidth=79
-set formatoptions=cqrnlb1a
+set formatoptions=coqrnlb1
 set linebreak
 set showbreak=>\ 
 
