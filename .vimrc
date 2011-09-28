@@ -69,7 +69,9 @@ vnoremap / /\v
 " Text width
 set wrap
 set textwidth=79
-set formatoptions=cqrnlb1
+set formatoptions=cqrnlb1a
+set linebreak
+set showbreak=>\ 
 
 " better % matching
 runtime macros/matchit.vim
