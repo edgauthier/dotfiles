@@ -71,7 +71,7 @@ set wrap
 set textwidth=79
 set formatoptions=coqrnlb1
 set linebreak
-set showbreak=>\ 
+"set showbreak=>\ 
 
 " better % matching
 runtime macros/matchit.vim
