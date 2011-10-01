@@ -31,6 +31,7 @@ set noerrorbells
 set ttyfast
 set ruler
 set laststatus=2
+set statusline=%<%f\ %{fugitive#statusline()}%h%m%r%=%-14.(%l,%c%V%)\ %P
 if version >= 703
     set relativenumber
 else
