@@ -4,6 +4,9 @@
 msgwait 2
 term xterm-256color
 
+# allow bold colors
+attrcolor b ".I"
+
 # This is how one can set a reattach password:
 # password ODSJQf.4IJN7E    # "1234"
 
@@ -73,6 +76,12 @@ termcapinfo   xterm 'XC=K%,%\E(B,[\304,\\\\\326,]\334,{\344,|\366,}\374,~\337'
 # xterm-52 tweaks:
 # - uses background color for delete operations
 termcapinfo xterm ut
+
+# tell screen how to set colors. AB = background, AF=foreground 
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' 
+
+# erase background with current bg color 
+defbce "on"
 
 ################
 #
