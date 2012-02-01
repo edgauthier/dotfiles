@@ -95,6 +95,10 @@ noremap <S-u> J
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
+" Make CTRL-U and CTRL-W 'undoable'
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+
 " edit .vimrc file
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <leader>eg <C-w><C-v><C-l>:e $MYGVIMRC<cr>
