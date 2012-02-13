@@ -1,2 +1,3 @@
-source C:\Users\egauthi1\dotfiles\.gvimrc
-let $MYGVIMRC = 'C:\Users\egauthi1\dotfiles\.gvimrc'
+let $DOTFILES = 'C:\Users\egauthi1\dotfiles'
+source $DOTFILES\.gvimrc
+let $MYGVIMRC = $DOTFILES . '\.gvimrc'
