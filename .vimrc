@@ -99,6 +99,11 @@ nmap gV `[v`]
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 
+" YankRing settings
+" Bypass single letter deletes
+let g:yankring_min_element_length = 2
+let g:yankring_history_file = '.yankring_history'
+
 " edit .vimrc file
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <leader>eg <C-w><C-v><C-l>:e $MYGVIMRC<cr>
