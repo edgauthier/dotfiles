@@ -8,4 +8,4 @@ set columns=140
 
 " TODO handle Mac/Windows fonts separatly
 set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
-set guioptions+=bc
+set guioptions+=b
