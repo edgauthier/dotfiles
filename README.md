@@ -1,14 +1,14 @@
 Installation
 ============
 
-    git clone git@github.com:edgauthier/dotfiles.git
+    git clone git@github.com:edgauthier/dotfiles.git .dotfiles
+    cd .dotfiles
     git submodule update --init
 
 Linux
 -----
 
-1. Move the contents of the dotfiles repository to your home directory.
-1. Remove the dotfiles directory.
+1. Run setupLinks.py from within the .dotfiles directory
 
 Windows
 -------
