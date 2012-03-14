@@ -14,5 +14,8 @@
         au! BufRead,BufNewFile *.inc
         au BufRead,BufNewFile *.inc     setfiletype php
         au BufRead,BufNewFile *.inc     set shiftwidth=2 softtabstop=2 tabstop=2
+
+        au! BufRead,BufNewFile *.md
+        au BufRead,BufNewFile *.md     setfiletype markdown
     augroup END
 
