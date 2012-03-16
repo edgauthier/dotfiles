@@ -1,11 +1,6 @@
-PYTHONPATH=~/dev/python
-export PYTHONPATH
+if [ -f /usr/local/git/contrib/completion/git-completion.bash ]
+then
+    . /usr/local/git/contrib/completion/git-completion.bash
+fi
 
-PATH=/usr/local/bin:~/bin:~/dev/python:$PATH
-export PATH
-
-EDITOR=/usr/bin/vim
-export EDITOR
-
-TERM=xterm-256color
-export TERM
+PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
