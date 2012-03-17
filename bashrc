@@ -1,3 +1,7 @@
+if [ -f .profile ]; then
+    . .profile
+fi
+
 PS1='[\e[1m\u@\h\e[m \W$(__git_ps1 " (%s)")]\$ '
 
 alias l='ls -AlhF --color=auto'
@@ -20,4 +24,3 @@ if [ -f /etc/bash_completion.d/git ]
 then
     . /etc/bash_completion.d/git
 fi
-
