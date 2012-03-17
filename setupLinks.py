@@ -4,8 +4,8 @@ import os
 
 dotfiles = os.path.expanduser('~/.dotfiles')
 old_dotfiles = os.path.expanduser('~/.old-dotfiles')
-excluded = ('.git', '.gitmodules', 'setupLinks.py', 
-    'README.md', 'TerminalColorSchemes', 'windows')
+excluded = ('.git', '.gitmodules', '.gitignore', 'setupLinks.py', 
+    'README.md', 'TerminalColorSchemes', 'windows', '.DS_Store')
 
 def paths(file):
     homeFile = os.path.expanduser('~/.' + file)
