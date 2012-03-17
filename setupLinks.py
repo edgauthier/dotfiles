@@ -21,8 +21,13 @@ except (OSError):
 for file in os.listdir(dotfiles):
     if file in excluded: continue
     homeFile, oldFile, dotFile = paths(file)
+
     try:
         os.rename(homeFile,oldFile)
+    except (OSError):
+        pass
+
+    try:
         os.symlink(dotFile,homeFile)
     except (OSError):
         pass
