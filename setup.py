@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 from subprocess import call
 
 # files to exclude when symlinking to the home directory
@@ -23,7 +24,7 @@ settings['branch.autosetuprebase'] = 'always'
 # except for those listed in excludedFiles
 ################################################################################
 
-dotfiles = os.path.expanduser('~/.dotfiles')
+dotfiles = sys.path[0] # the script's directory
 old_dotfiles = os.path.expanduser('~/.old-dotfiles')
 
 # format different paths for a given file
