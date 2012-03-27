@@ -9,15 +9,18 @@ excludedFiles = ('.git', '.gitmodules', '.gitignore', 'setupLinks.py',
     'README.md', 'TerminalColorSchemes', 'windows', '.DS_Store')
 
 # settings to add to .gitconfig
-settings = dict()
-settings['user.email'] = 'ed@egauthier.net'
-settings['user.name'] = 'Ed Gauthier'
-settings['github.user'] = 'edgauthier'
-settings['github.token'] = None
-settings['core.excludesfile'] = os.path.expanduser('~/.gitignore-global')
-settings['push.default'] = 'upstream'
-settings['branch.autosetupmerge'] = 'always'
-settings['branch.autosetuprebase'] = 'always'
+gitSettings = dict()
+gitSettings['user.email'] = 'ed@egauthier.net'
+gitSettings['user.name'] = 'Ed Gauthier'
+gitSettings['github.user'] = 'edgauthier'
+gitSettings['github.token'] = None
+gitSettings['core.excludesfile'] = os.path.expanduser('~/.gitignore-global')
+gitSettings['push.default'] = 'upstream'
+gitSettings['branch.autosetuprebase'] = 'always'
+
+# settings to configure on this dotfiles repository
+dotfilesSettings = dict()
+dotfilesSettings['branch.master.rebase'] = 'true'
 
 ################################################################################
 # Set up symlinks in the home directory to all files in the current directory
@@ -58,8 +61,18 @@ for fileName in os.listdir(dotfiles):
 ################################################################################
 
 gitConfigArgs = ['git', 'config', '--global']
-for setting, settingValue in settings.iteritems():
+for setting, settingValue in gitSettings.iteritems():
     if settingValue == None:
         settingValue = raw_input(setting + ' = ')
-    call(gitConfigArgs + [setting, settingValue])
+    if len(settingValue) > 0:
+        call(gitConfigArgs + [setting, settingValue])
 
+# now tweak some local settings for the dotfiles repository that might not be
+# set if gitconfig wasn't set up already (such as with a fresh clone.
+dotfilesConfigFile = os.path.join(dotfiles,'.git','config')
+gitConfigArgs = ['git', 'config', '-f', dotfilesConfigFile]
+for setting, settingValue in dotfilesSettings.iteritems():
+    if settingValue == None:
+        settingValue = raw_input('[dotfiles] '  + setting + ' = ')
+    if len(settingValue) > 0:
+        call(gitConfigArgs + [setting, settingValue])
