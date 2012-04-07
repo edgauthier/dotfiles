@@ -1,5 +1,5 @@
-if [ -f .profile ]; then
-    . .profile
+if [ -f ~/.profile ]; then
+    . ~/.profile
 fi
 
 PS1='[\e[1m\u@\h\e[m \W$(__git_ps1 " (%s)")]\$ '
