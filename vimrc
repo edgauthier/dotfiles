@@ -119,6 +119,8 @@ else
     map <leader>ee :e <C-R>=expand("%:p:h") . "\\" <CR>
 endif
 
+nnoremap <leader>wd :cd %:p:h<cr>
+
 " move by screen lines, not file lines 
 " Map for both Windows and Mac.
 nmap <D-j> gj
