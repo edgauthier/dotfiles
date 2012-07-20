@@ -28,3 +28,11 @@ export P4USER
 
 P4PORT=$P4HOST:1666
 export P4PORT
+
+WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME
+
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
