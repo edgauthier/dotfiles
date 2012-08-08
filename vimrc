@@ -147,9 +147,6 @@ vmap <A-0> g0
 " ; works like :
 nnoremap ; :
 vnoremap ; :
-nnoremap q; q:
-vnoremap q; q:
-
 
 " window control
 set splitright
