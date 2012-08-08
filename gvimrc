@@ -7,5 +7,10 @@ set columns=140
 "set clipboard=unnamed
 
 " TODO handle Mac/Windows fonts separatly
-set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
+if has("macunix")
+    set guifont=Menlo_Regular:h13
+else
+    set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
+end if
+
 set guioptions+=b
