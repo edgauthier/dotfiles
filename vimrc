@@ -170,6 +170,9 @@ map <leader>cl :set background=light<CR>:colorscheme solarized<CR>
 map <leader>cd :set background=dark<CR>:colorscheme solarized<CR>
 map <leader>bg :ToggleBG<CR>
 
+"
+noremap <leader>f :NERDTree<CR>
+
 " other settings to review/cleanup
 
 " enable the mouse to move windows
