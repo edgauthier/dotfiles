@@ -182,12 +182,6 @@ map <F3> my?{%kmzj%j:.,'zs/^  \\|^  //`y
 map <F5> mzI<!-- A -->`z5l
 " html/xml uncomment
 map <F6> mz0/<!-- df / -->df>`z5h
-" MiniBufExplorer settings
-let g:miniBufExplSplitBelow = 0
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-let g:miniBufExplTabWrap = 1
-let g:miniBufExplUseSingleClick = 1
 
 " edit file in new tab
 
