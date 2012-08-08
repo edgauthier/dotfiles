@@ -6,11 +6,10 @@ set columns=140
 " overwrites the clipboard...
 "set clipboard=unnamed
 
-" TODO handle Mac/Windows fonts separatly
 if has("macunix")
     set guifont=Menlo_Regular:h13
 else
     set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
-end if
+endif
 
 set guioptions+=b
