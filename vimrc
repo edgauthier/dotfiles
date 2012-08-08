@@ -189,18 +189,11 @@ let g:miniBufExplModSelTarget = 1
 let g:miniBufExplTabWrap = 1
 let g:miniBufExplUseSingleClick = 1
 
-map  :WMToggle
-map  :FirstExplorerWindow
-map  :BottomExplorerWindow
-
 " edit file in new tab
 
 " jump to current window/tab if buffer is already open
 "set switchbuf=usetab
 
-
-" Abbreviations
-ab pfn /*/function () {}<Up><Right><Right><Right><Right><Right><Right><Right><Right><BS>
 
 nnoremap <leader>lpu /\vend.*customO<c-r>*<esc>
 
