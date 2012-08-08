@@ -9,7 +9,7 @@ Installation
 Linux
 -----
 
-1. Run setupLinks.py from within the .dotfiles directory
+1. Run setup.py from within the .dotfiles directory
 
 Windows
 -------

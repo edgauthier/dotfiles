@@ -5,7 +5,7 @@ import sys
 from subprocess import call
 
 # files to exclude when symlinking to the home directory
-excludedFiles = ('.git', '.gitmodules', '.gitignore', 'setupLinks.py', 
+excludedFiles = ('.git', '.gitmodules', '.gitignore', 'setup.py', 
     'README.md', 'TerminalColorSchemes', 'windows', '.DS_Store')
 
 # settings to add to .gitconfig
