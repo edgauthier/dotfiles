@@ -8,7 +8,7 @@ alias l='ls -AlhF --color=auto'
 alias ls='ls -F --color=auto'
 
 # bash on the Mac doesn't use the same option for colored output
-if [ "$TERM_PROGRAM" == "Apple_Terminal" ]; then
+if [ "$TERM_PROGRAM" == "Apple_Terminal" ] || [ "$TERM_PROGRAM" == "iTerm.app" ]; then
     alias l='ls -AlhFG'
     alias ls='ls -FG'
 fi
