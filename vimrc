@@ -171,7 +171,8 @@ map <leader>cd :set background=dark<CR>:colorscheme solarized<CR>
 map <leader>bg :ToggleBG<CR>
 
 "
-noremap <leader>f :NERDTree<CR>
+noremap <leader>f :NERDTreeToggle<CR>
+noremap <leader>F :NERDTreeFind<CR>
 
 " other settings to review/cleanup
 
