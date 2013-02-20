@@ -162,6 +162,10 @@ nnoremap <C-l> <C-w>l
 map <Leader>tc :tabclose
 map <Leader>tn :tabnew
 
+" Buffer mappings
+nnoremap <leader>bb :b#
+nnoremap <leader>bd :bdelete
+
 " Color settings
 set background=dark
 let g:solarized_termcolors=16
