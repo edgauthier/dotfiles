@@ -118,6 +118,7 @@ else
     map <leader>ee :e <C-R>=expand("%:p:h") . "\\" <CR>
 endif
 
+" Set working directory to current directory
 nnoremap <leader>wd :cd %:p:h<cr>
 
 " move by screen lines, not file lines 
