@@ -90,7 +90,6 @@ vmap <S-k> [egv
 vmap <S-j> ]egv
 
 noremap <S-u> J
-noremap <S-u> J
 
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
