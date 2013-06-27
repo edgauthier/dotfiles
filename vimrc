@@ -42,12 +42,16 @@ set hidden
 set history=1000
 set title
 set titleold=""
+set shortmess=atI
+set nojoinspaces
 syntax enable
 filetype on
 filetype plugin on
 filetype indent on
-set shortmess=atI
-set nojoinspaces
+" make new empty files markdown by default
+autocmd BufEnter * if &filetype == "" | setlocal ft=markdown | endif
+" save markdown file with first line as filename
+nnoremap <leader>wm :execute "w ".fnameescape(strpart(getline(1),2)."\.md")<cr>
 
 " show whitespace
 set listchars=tab:>-,trail:·,eol:$
