@@ -2,6 +2,16 @@ if [ -f ~/.profile ]; then
     . ~/.profile
 fi
 
+if [ -f /etc/bash_completion ]
+then 
+    . /etc/bash_completion
+fi
+
+if [ -f /usr/local/etc/bash_completion ]
+then 
+    . /usr/local/etc/bash_completion
+fi
+
 if [ -f /usr/local/git/contrib/completion/git-completion.bash ]
 then
     . /usr/local/git/contrib/completion/git-completion.bash
