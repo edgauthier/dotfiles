@@ -22,3 +22,6 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
+OFEXPORT_HOME=$HOME/dev/ofexport
+export OFEXPORT_HOME
+PATH=$PATH:$OFEXPORT_HOME/bin
