@@ -1,5 +1,7 @@
 vim/doc/tags
 vim/.netrwhist
 vim/spell/*.spl
-emacs.d/elpa/
+*.elc
+*~
+emacs.d/elpa/archives/
 emacs.d/auto-save-list/
