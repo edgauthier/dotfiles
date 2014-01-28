@@ -1,4 +1,4 @@
-(load-theme 'solarized-dark t)
+(load-theme 'solarized-light t)
 
 (if (display-graphic-p)
     (progn ;; then

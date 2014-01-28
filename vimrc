@@ -171,7 +171,7 @@ nnoremap <leader>bb :b#
 nnoremap <leader>bd :bdelete
 
 " Color settings
-set background=dark
+set background=light
 let g:solarized_termcolors=16
 "let g:solarized_termcolors=256
 colorscheme solarized
