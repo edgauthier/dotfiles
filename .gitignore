@@ -3,5 +3,5 @@ vim/.netrwhist
 vim/spell/*.spl
 *.elc
 *~
-emacs.d/elpa/archives/
+emacs.d/elpa/
 emacs.d/auto-save-list/
