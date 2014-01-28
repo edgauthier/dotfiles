@@ -1,5 +1,9 @@
 (load-theme 'solarized-dark t)
 
-(set-face-attribute 'default nil :font "AndaleMono-14")
+(if (display-graphic-p)
+    (progn ;; then
+      (set-face-attribute 'default nil :font "AndaleMono-14"))
+    ;; else
+)
 
 (provide 'my-look)

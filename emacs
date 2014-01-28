@@ -1,18 +1,13 @@
-(require 'package)
-(add-to-list 'package-archives 
-    '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-    '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-
 (add-to-list 'load-path "~/.emacs.d/net-lisp/")
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
+(load-library "my-packages")
 (load-library "my-look")
 (load-library "my-environment")
 (load-library "my-buffer-mgmt")
 
-(server-start)
+(when (display-graphic-p)
+  (server-start))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
