@@ -16,4 +16,7 @@
 ;; Only Y or N
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; Don't prompt to follow symlinks
+(setq vc-follow-symlinks nil)
+
 (provide 'my-environment)
