@@ -8,7 +8,7 @@
 (require 'cl)
 (defvar my-package-list '(color-theme-solarized
 			  org
-			  csv-mode)
+			  markdown-mode)
   "Default packages")
 
 (defun my-packages-installed-p ()
