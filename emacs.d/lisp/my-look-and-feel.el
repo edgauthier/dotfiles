@@ -1,5 +1,17 @@
+;; Functions for loading/toggling the solarized theme
+(defun load-my-current-theme ()
+  (load-theme my-current-theme t))
+
+(defun toggle-my-current-theme ()
+  (interactive)
+  (if (equal my-current-theme 'solarized-light)
+      (setq my-current-theme 'solarized-dark)
+    (setq my-current-theme 'solarized-light))
+  (load-my-current-theme))
+
 ;; Set the default theme
-(load-theme 'solarized-light t)
+(setq my-current-theme 'solarized-light)
+(load-my-current-theme)
 
 ;; No dialog boxes
 (setq use-dialog-box nil)

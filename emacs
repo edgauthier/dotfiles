@@ -5,6 +5,7 @@
 (load-library "my-look-and-feel")
 (load-library "my-environment")
 (load-library "my-buffer-mgmt")
+(load-library "my-key-bindings")
 
 (when (display-graphic-p)
   (server-start))
