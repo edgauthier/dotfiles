@@ -40,7 +40,7 @@
       (if (eq system-type 'windows-nt)
 	  (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono-10.0"))
       ;; Set the default window size
-      (add-to-list 'default-frame-alist '(height . 50))
+      (add-to-list 'default-frame-alist '(height . 40))
       (add-to-list 'default-frame-alist '(width . 130))
       )
     ;; Else
