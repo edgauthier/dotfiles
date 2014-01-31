@@ -4,6 +4,8 @@
 (setq my-color-themes (list
   'tangotango
   'zenburn
+;;  'solarized-dark
+  'solarized-light
 ))
 
 (defun my-theme-set-default () ; Set the first row
@@ -17,11 +19,17 @@
 
 (defun my-theme-cycle ()            
   (interactive)
+  (disable-theme (car theme-current))
   (setq theme-current (cdr theme-current))
   (if (null theme-current)
       (setq theme-current my-color-themes))
   (load-theme (car theme-current) t)
-  (set-face-attribute 'default nil :height 140)
+  ;; Fonts keep getting rest back to 9pt for some reason
+  ;; Fix up on each operating system differently
+  (if (eql system-type 'darwin)
+      (set-face-attribute 'default nil :height 140))
+  (if (eql system-type 'windows-nt)
+      (set-face-attribute 'default nil :height 100))
   (message "%S" (car theme-current)))
 
 (setq theme-current my-color-themes)
