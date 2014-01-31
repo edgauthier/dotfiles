@@ -7,6 +7,8 @@
 
 (require 'cl)
 (defvar my-package-list '(color-theme-solarized
+			  zenburn-theme
+			  tangotango-theme
 			  org
 			  markdown-mode)
   "Default packages")

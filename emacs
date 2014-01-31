@@ -3,6 +3,7 @@
 
 (load-library "my-packages")
 (load-library "my-look-and-feel")
+(load-library "my-gui")
 (load-library "my-environment")
 (load-library "my-buffer-mgmt")
 (load-library "my-modes")

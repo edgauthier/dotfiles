@@ -1,7 +1,7 @@
 ;; C-, bindings
 (define-prefix-command 'my-prefix-map)
 (global-set-key (kbd "C-,") 'my-prefix-map)
-(define-key my-prefix-map (kbd "b") 'toggle-my-current-theme)
+(define-key my-prefix-map (kbd "b") 'my-theme-cycle)
 (define-key my-prefix-map (kbd "s") 'switch-to-scratch-and-back)
 
 ;; C-c bindings
