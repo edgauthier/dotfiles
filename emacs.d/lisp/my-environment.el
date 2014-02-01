@@ -9,4 +9,6 @@
 (setq initial-scratch-message nil)
 (setq inhibit-startup-message t)
 
+(setq read-buffer-completion-ignore-case t)
+
 (provide 'my-environment)
