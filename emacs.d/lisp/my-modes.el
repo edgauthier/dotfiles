@@ -10,7 +10,9 @@
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
 
-;; Special handling for C-a/C-e
+;; Special handling for C-a/C-e/C-k
 (setq org-special-ctrl-a/e t)
+(setq org-special-ctrl-k t)
+(setq org-ctrl-k-protect-subtree t)
 
 (provide 'my-modes)
