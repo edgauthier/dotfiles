@@ -9,6 +9,10 @@
 (setq initial-scratch-message nil)
 (setq inhibit-startup-message t)
 
+;; Ignore case for buffer matching
 (setq read-buffer-completion-ignore-case t)
+
+;; Wrap long lines at spaces
+(global-visual-line-mode 1)
 
 (provide 'my-environment)
