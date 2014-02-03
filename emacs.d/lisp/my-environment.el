@@ -13,6 +13,9 @@
 (setq read-buffer-completion-ignore-case t)
 
 ;; Wrap long lines at spaces
-(global-visual-line-mode 1)
+(setq global-visual-line-mode 1)
+
+;; Prefer horizontal splits
+(setq split-width-threshold 9999)
 
 (provide 'my-environment)
