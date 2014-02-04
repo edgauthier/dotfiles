@@ -19,4 +19,10 @@
 (setq org-special-ctrl-k t)
 (setq org-ctrl-k-protect-subtree t)
 
+;; Agenda configuration
+(setq org-agenda-span 'day) ; Only display a single day by default
+(setq org-agenda-todo-ignore-with-date t) ; Don't show items with dates on TODO list - they're already planned for a date
+(setq org-enforce-todo-dependencies t)
+(setq org-agenda-dim-blocked-tasks 'invisible)
+
 (provide 'my-modes)
