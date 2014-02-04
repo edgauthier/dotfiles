@@ -2,6 +2,7 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cb" 'org-iswitchb)
+(define-key global-map "\C-cc" 'org-capture)
 
 ;; C-, bindings for a minor mode
 (define-prefix-command 'my-prefix-map)
