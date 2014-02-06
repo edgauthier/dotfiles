@@ -29,13 +29,6 @@
 (setq org-special-ctrl-k t)
 (setq org-ctrl-k-protect-subtree t)
 
-;; Agenda configuration
-(setq org-agenda-span 'day) ; Only display a single day by default
-(setq org-agenda-todo-ignore-with-date t) ; Don't show items with dates on TODO list - they're already planned for a date
-(setq org-agenda-dim-blocked-tasks 'invisible)
-(setq org-agenda-skip-scheduled-if-done t)
-(setq org-enforce-todo-dependencies t)
-
 ;; Handle Outlook links
 (org-add-link-type "outlook" 'org-outlook-open)
 
@@ -44,6 +37,21 @@
    (w32-shell-execute "open" "C:/Program Files (x86)/Microsoft Office/Office14/OUTLOOK.EXE" (concat "/select " "outlook:" id)))
 
 ;; Other customization
-(setq org-return-follows-link t)
+(setq org-return-follows-link t) ; really - who wants to use the mouse
+(setq org-agenda-ignore-drawer-properties '(effort appt category)) ; not using these - speed up agendas
+
+;; Agenda configuration
+(setq org-agenda-span 'day) ; Only display a single day by default
+(setq org-agenda-todo-ignore-with-date t) ; Don't show items with dates on TODO list - they're already planned for a date
+(setq org-agenda-dim-blocked-tasks 'invisible)
+(setq org-agenda-skip-scheduled-if-done t)
+(setq org-enforce-todo-dependencies t)
+
+;; Custom Agenda Views
+(setq org-agenda-custom-commands
+      '(("A" "Daily Agenda" 
+	 ((agenda "" ((org-agenda-overriding-header "Custom Daily Agenda")))
+	 (tags "routine" ((org-agenda-overriding-header "Routine Tasks")))))
+	 ))
 
 (provide 'my-modes)
