@@ -49,9 +49,38 @@
 
 ;; Custom Agenda Views
 (setq org-agenda-custom-commands
-      '(("A" "Daily Agenda" 
-	 ((agenda "" ((org-agenda-overriding-header "Custom Daily Agenda")))
-	 (tags "routine" ((org-agenda-overriding-header "Routine Tasks")))))
-	 ))
+      '(("a" "Daily Agenda" 
+	 ((tags-todo "morning" 
+		  ((org-agenda-overriding-header "Morning Tasks")
+		   (org-agenda-todo-ignore-with-date nil)
+		   (org-agenda-todo-ignore-scheduled 'future)
+		   (org-agenda-todo-ignore-deadlines 'future)
+		   (org-agenda-hide-tags-regexp "morning")))
+	  (agenda "" 
+		  ((org-agenda-overriding-header "Today's Work")
+		   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("morning" "routine")))))
+	  (tags-todo "routine" 
+		  ((org-agenda-overriding-header "Routine Maintenance")
+		   (org-agenda-todo-ignore-with-date nil)
+		   (org-agenda-todo-ignore-scheduled 'future)
+		   (org-agenda-todo-ignore-deadlines 'future)
+		   (org-agenda-hide-tags-regexp "routine"))) ))
+	))
+
+(defun eg/org-agenda-skip-tags (tags &optional others)
+  "Skip all entries that have one or more of specified tags.
+
+If OTHERS is true, skip all entries that do NOT have one of the specified tags."
+  (let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
+        (current-headline (or (and (org-at-heading-p)
+                                   (point))
+                              (save-excursion (org-back-to-heading)))))
+    (if others
+        (if (not (intersection tags (org-get-tags-at current-headline) :test 'string=))
+            next-headline
+          nil)
+      (if (intersection tags (org-get-tags-at current-headline) :test 'string=)
+          next-headline
+        nil))))
 
 (provide 'my-modes)
