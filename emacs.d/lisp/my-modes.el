@@ -46,6 +46,10 @@
 (setq org-agenda-dim-blocked-tasks t)
 (setq org-agenda-skip-scheduled-if-done t)
 (setq org-enforce-todo-dependencies t)
+(add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1))) ; Highlight selected line in agenda
+;; Disable mouse highlighting in agenda
+(add-hook 'org-finalize-agenda-hook
+	  (lambda () (remove-text-properties (point-min) (point-max) '(mouse-face t))))
 
 ;; Custom Agenda Views
 (setq org-agenda-custom-commands
