@@ -43,7 +43,7 @@
 ;; Agenda configuration
 (setq org-agenda-span 'day) ; Only display a single day by default
 (setq org-agenda-todo-ignore-with-date t) ; Don't show items with dates on TODO list - they're already planned for a date
-(setq org-agenda-dim-blocked-tasks 'invisible)
+(setq org-agenda-dim-blocked-tasks t)
 (setq org-agenda-skip-scheduled-if-done t)
 (setq org-enforce-todo-dependencies t)
 
