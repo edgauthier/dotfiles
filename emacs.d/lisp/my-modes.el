@@ -45,6 +45,7 @@
 (setq org-agenda-todo-ignore-with-date t) ; Don't show items with dates on TODO list - they're already planned for a date
 (setq org-agenda-dim-blocked-tasks t)
 (setq org-agenda-skip-scheduled-if-done t)
+(setq org-agenda-tags-todo-honor-ignore-options t)
 (setq org-enforce-todo-dependencies t)
 (add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1))) ; Highlight selected line in agenda
 ;; Disable mouse highlighting in agenda
