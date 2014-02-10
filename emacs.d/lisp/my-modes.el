@@ -14,6 +14,7 @@
 ;; Todo states
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WAITING(w@/!)" "|" "DONE(d!)")))
+(setq org-treat-S-cursor-todo-selection-as-state-change nil) ; Allow Shift Cursor movements to fix up TODO states without logging
 
 ;; Org structure
 (setq org-log-into-drawer 'LOGBOOK)
@@ -43,10 +44,11 @@
 ;; Agenda configuration
 (setq org-agenda-span 'day) ; Only display a single day by default
 (setq org-agenda-todo-ignore-with-date t) ; Don't show items with dates on TODO list - they're already planned for a date
-(setq org-agenda-dim-blocked-tasks t)
-(setq org-agenda-skip-scheduled-if-done t)
-(setq org-agenda-tags-todo-honor-ignore-options t)
+(setq org-agenda-dim-blocked-tasks t) ; Show me blocked tasks - better big picture view
+(setq org-agenda-skip-scheduled-if-done t) ; Don't show Done tasks
+(setq org-agenda-tags-todo-honor-ignore-options t) 
 (setq org-enforce-todo-dependencies t)
+(setq org-agenda-compact-blocks t) ; Compact the block agenda view
 (add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1))) ; Highlight selected line in agenda
 ;; Disable mouse highlighting in agenda
 (add-hook 'org-finalize-agenda-hook
@@ -87,5 +89,16 @@ If OTHERS is true, skip all entries that do NOT have one of the specified tags."
       (if (intersection tags (org-get-tags-at current-headline) :test 'string=)
           next-headline
         nil))))
+
+(defun eg/org-remove-empty-propert-drawers ()
+  "*Remove all empty property drawers in current file."
+  (interactive)
+  (unless (eq major-mode 'org-mode)
+    (error "You need to turn on Org mode for this function."))
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward ":PROPERTIES:" nil t)
+      (save-excursion
+        (org-remove-empty-drawer-at "PROPERTIES" (match-beginning 0))))))
 
 (provide 'my-modes)
