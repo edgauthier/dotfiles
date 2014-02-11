@@ -48,7 +48,6 @@
 (setq org-agenda-skip-scheduled-if-done t) ; Don't show Done tasks
 (setq org-agenda-tags-todo-honor-ignore-options t) 
 (setq org-enforce-todo-dependencies t)
-(setq org-agenda-compact-blocks t) ; Compact the block agenda view
 (add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1))) ; Highlight selected line in agenda
 ;; Disable mouse highlighting in agenda
 (add-hook 'org-finalize-agenda-hook
@@ -56,22 +55,37 @@
 
 ;; Custom Agenda Views
 (setq org-agenda-custom-commands
-      '(("a" "Daily Agenda" 
-	 ((tags-todo "morning" 
+      '(("A" "Default Agenda" agenda)
+;	("a" "Custom Daily Agenda" 
+;	 ((tags-todo "morning" 
+;		  ((org-agenda-overriding-header "Morning Tasks")
+;		   (org-agenda-todo-ignore-with-date nil)
+;		   (org-agenda-todo-ignore-scheduled 'future)
+;		   (org-agenda-todo-ignore-deadlines 'future)
+;		   (org-agenda-hide-tags-regexp "morning")))
+;	  (agenda "" 
+;		  ((org-agenda-overriding-header "Today's Work")
+;		   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("morning" "routine")))))
+;	  (tags-todo "routine" 
+;		  ((org-agenda-overriding-header "Routine Maintenance")
+;		   (org-agenda-todo-ignore-with-date nil)
+;		   (org-agenda-todo-ignore-scheduled 'future)
+;		   (org-agenda-todo-ignore-deadlines 'future)
+;		   (org-agenda-hide-tags-regexp "routine"))) )
+;	 ((org-agenda-compact-blocks t)) )
+	("a" "Custom Daily Agenda" 
+	 ((agenda "morning" 
 		  ((org-agenda-overriding-header "Morning Tasks")
-		   (org-agenda-todo-ignore-with-date nil)
-		   (org-agenda-todo-ignore-scheduled 'future)
-		   (org-agenda-todo-ignore-deadlines 'future)
+		   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("morning") t))
 		   (org-agenda-hide-tags-regexp "morning")))
 	  (agenda "" 
 		  ((org-agenda-overriding-header "Today's Work")
 		   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("morning" "routine")))))
-	  (tags-todo "routine" 
+	  (agenda "routine" 
 		  ((org-agenda-overriding-header "Routine Maintenance")
-		   (org-agenda-todo-ignore-with-date nil)
-		   (org-agenda-todo-ignore-scheduled 'future)
-		   (org-agenda-todo-ignore-deadlines 'future)
+		   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("routine") t))
 		   (org-agenda-hide-tags-regexp "routine"))) ))
+
 	))
 
 (defun eg/org-agenda-skip-tags (tags &optional others)
