@@ -11,6 +11,9 @@
 ;; Location for capture items
 (setq org-default-notes-file (concat org-directory "/inbox.org"))
 
+;; Completion
+(setq org-completion-use-ido t)
+
 ;; Todo states
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WAITING(w@/!)" "|" "DONE(d!)")))

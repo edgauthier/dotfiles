@@ -12,6 +12,15 @@
 ;; Ignore case for buffer matching
 (setq read-buffer-completion-ignore-case t)
 
+;; Use IDO mode
+(ido-mode 1)
+
+;; Complete variables/functions as well
+(icomplete-mode 1)
+
+;; Use ibuffer
+(defalias 'list-buffers 'ibuffer)
+
 ;; Wrap long lines at spaces
 (global-visual-line-mode 1)
 
