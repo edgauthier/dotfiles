@@ -5,28 +5,48 @@
 ;; default directories
 (setq org-directory "~/org")
 (setq org-agenda-files (list (concat org-directory "/inbox.org")
-			     (concat org-directory "/system_maint.org")
+			     (concat org-directory "/system.org")
 			     (concat org-directory "/active/")))
 
 ;; Location for capture items
 (setq org-default-notes-file (concat org-directory "/inbox.org"))
 
-;; Completion
-(setq org-completion-use-ido t)
+;; Capture templates
+(setq org-capture-templates
+      '(("t" "Task" entry (file+headline (concat org-directory "/inbox.org") "Inbox")
+	 "* TODO %?\n%u\n%a\n")))
 
 ;; Todo states
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WAITING(w@/!)" "|" "DONE(d!)")))
 (setq org-treat-S-cursor-todo-selection-as-state-change nil) ; Allow Shift Cursor movements to fix up TODO states without logging
+(setq org-enforce-todo-dependencies t)
+
+;; Tags
+
+;; Completion
+(setq org-completion-use-ido t)
+(set org-indirect-buffer-display 'current-window)
 
 ;; Org structure
 (setq org-log-into-drawer 'LOGBOOK)
 (setq org-startup-indented t)
 (setq org-catch-invisible-edits 'smart)
+(setq org-startup-folded t)
+(setq org-agenda-inhibit-startup nil)
 
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
 				 (org-agenda-files :maxlevel . 9))))
+
+; Use full outline paths for refile targets - we file directly with IDO
+(setq org-refile-use-outline-path t)
+
+; Targets complete directly with IDO
+(setq org-outline-path-complete-in-steps nil)
+
+; Allow refile to create parent tasks with confirmation
+(setq org-refile-allow-creating-parent-nodes 'confirm)
 
 ;; Special handling for C-a/C-e/C-k
 (setq org-special-ctrl-a/e t)
@@ -50,15 +70,18 @@
 (setq org-agenda-dim-blocked-tasks t) ; Show me blocked tasks - better big picture view
 (setq org-agenda-skip-scheduled-if-done t) ; Don't show Done tasks
 (setq org-agenda-tags-todo-honor-ignore-options t) 
-(setq org-enforce-todo-dependencies t)
-(add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1))) ; Highlight selected line in agenda
+(setq org-agenda-window-setup 'current-window)
+(setq org-agenda-start-on-weekday nil)
+
+;; Highlight selected line in agenda
+(add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1))) 
 ;; Disable mouse highlighting in agenda
 (add-hook 'org-finalize-agenda-hook
 	  (lambda () (remove-text-properties (point-min) (point-max) '(mouse-face t))))
 
 ;; Custom Agenda Views
 (setq org-agenda-custom-commands
-      '(("A" "Default Agenda" agenda)
+      '(
 ;	("a" "Custom Daily Agenda" 
 ;	 ((tags-todo "morning" 
 ;		  ((org-agenda-overriding-header "Morning Tasks")
@@ -76,7 +99,7 @@
 ;		   (org-agenda-todo-ignore-deadlines 'future)
 ;		   (org-agenda-hide-tags-regexp "routine"))) )
 ;	 ((org-agenda-compact-blocks t)) )
-	("a" "Custom Daily Agenda" 
+	(" " "Custom Daily Agenda" 
 	 ((agenda "morning" 
 		  ((org-agenda-overriding-header "Morning Tasks")
 		   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("morning") t))
@@ -95,17 +118,20 @@
   "Skip all entries that have one or more of specified tags.
 
 If OTHERS is true, skip all entries that do NOT have one of the specified tags."
-  (let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
-        (current-headline (or (and (org-at-heading-p)
-                                   (point))
-                              (save-excursion (org-back-to-heading)))))
-    (if others
-        (if (not (intersection tags (org-get-tags-at current-headline) :test 'string=))
-            next-headline
-          nil)
-      (if (intersection tags (org-get-tags-at current-headline) :test 'string=)
-          next-headline
-        nil))))
+  (save-restriction
+    (widen)
+    (show-branches)
+    (let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
+	  (current-headline (or (and (org-at-heading-p)
+				     (point))
+				(save-excursion (org-back-to-heading)))))
+      (if others
+	  (if (not (intersection tags (org-get-tags-at current-headline) :test 'string=))
+	      next-headline
+	    nil)
+	(if (intersection tags (org-get-tags-at current-headline) :test 'string=)
+	    next-headline
+	  nil)))))
 
 (defun eg/org-remove-empty-propert-drawers ()
   "*Remove all empty property drawers in current file."
