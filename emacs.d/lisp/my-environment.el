@@ -15,6 +15,13 @@
 ;; Use IDO mode
 (ido-mode 1)
 
+;; Use the current window when visiting files and buffers with ido
+(setq ido-default-file-method 'selected-window)
+(setq ido-default-buffer-method 'selected-window)
+
+;; Use ido everywhere
+(setq ido-everywhere t)
+
 ;; Complete variables/functions as well
 (icomplete-mode 1)
 
