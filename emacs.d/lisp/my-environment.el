@@ -34,4 +34,7 @@
 ;; Prefer horizontal splits
 (setq split-width-threshold 9999)
 
+;; Load changed files if there are no changes in the buffer
+(global-auto-revert-mode t)
+
 (provide 'my-environment)
