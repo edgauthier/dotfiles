@@ -1,6 +1,11 @@
 ;; org
 (require 'org)
+(require 'org-clock)
+;(require 'org-protocol)
 (require 'cl)
+;(require 'real-auto-save)
+
+;(add-hook 'org-mode-hook 'turn-on-real-auto-save)
 
 ;; default directories
 (setq org-directory "~/org")
@@ -14,15 +19,21 @@
 ;; Capture templates
 (setq org-capture-templates
       '(("t" "Task" entry (file+headline (concat org-directory "/inbox.org") "Inbox")
-	 "* TODO %?\n%u\n%a\n")))
+	 "* TODO %?\n%u\n%a\n")
+;	("w" "org-protocol" entry (file+headline (concat org-directory "/inbox.org") "Inbox") 
+;	 "* TODO %i\n%u\n%a\n" :immediate-finish t)
+	))
+
 
 ;; Todo states
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WAITING(w@/!)" "|" "DONE(d!)")))
 (setq org-treat-S-cursor-todo-selection-as-state-change nil) ; Allow Shift Cursor movements to fix up TODO states without logging
 (setq org-enforce-todo-dependencies t)
+(setq org-log-done 'time)
 
 ;; Tags
+
 
 ;; Completion
 (setq org-completion-use-ido t)
@@ -82,6 +93,7 @@
 ;; Custom Agenda Views
 (setq org-agenda-custom-commands
       '(
+	("A" "Default Agenda View" agenda "")
 ;	("a" "Custom Daily Agenda" 
 ;	 ((tags-todo "morning" 
 ;		  ((org-agenda-overriding-header "Morning Tasks")
@@ -99,7 +111,7 @@
 ;		   (org-agenda-todo-ignore-deadlines 'future)
 ;		   (org-agenda-hide-tags-regexp "routine"))) )
 ;	 ((org-agenda-compact-blocks t)) )
-	(" " "Custom Daily Agenda" 
+	("a" "Custom Daily Agenda" 
 	 ((agenda "morning" 
 		  ((org-agenda-overriding-header "Morning Tasks")
 		   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("morning") t))
