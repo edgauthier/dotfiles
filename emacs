@@ -1,3 +1,4 @@
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/org/")
 (add-to-list 'load-path "~/.emacs.d/net-lisp/")
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
