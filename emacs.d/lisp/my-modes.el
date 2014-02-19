@@ -73,6 +73,9 @@
    "Open the Outlook item identified by ID.  ID should be an Outlook GUID."
    (w32-shell-execute "open" "C:/Program Files (x86)/Microsoft Office/Office14/OUTLOOK.EXE" (concat "/select " "outlook:" id)))
 
+;; Use IDs for links
+(setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+
 ;; Other customization
 (setq org-return-follows-link t) ; really - who wants to use the mouse
 (setq org-agenda-ignore-drawer-properties '(effort appt category)) ; not using these - speed up agendas
