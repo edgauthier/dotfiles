@@ -20,7 +20,7 @@
 ;; Capture templates
 (setq org-capture-templates
       '(("t" "Task" entry (file+headline (concat org-directory "/inbox.org") "Inbox")
-	 "* TODO %?\n%u\n%a\n")
+	 "* TODO %?\n:LOGBOOK:\n- Task captured on %u \\\\\n%a\n:END:\n")
 ;	("w" "org-protocol" entry (file+headline (concat org-directory "/inbox.org") "Inbox") 
 ;	 "* TODO %i\n%u\n%a\n" :immediate-finish t)
 	))
