@@ -37,4 +37,8 @@
 ;; Load changed files if there are no changes in the buffer
 (global-auto-revert-mode t)
 
+;; Tab handling
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+
 (provide 'my-environment)
