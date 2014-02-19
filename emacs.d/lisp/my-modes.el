@@ -76,6 +76,21 @@
 ;; Use IDs for links
 (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 
+;; List bullets
+(setq org-list-demote-modify-bullet (quote (("+" . "-")
+                                            ("*" . "-")
+                                            ("-" . "+")
+                                            ("1." . "-")
+                                            ("1)" . "-")
+                                            ("A)" . "-")
+                                            ("B)" . "-")
+                                            ("a)" . "-")
+                                            ("b)" . "-")
+                                            ("A." . "-")
+                                            ("B." . "-")
+                                            ("a." . "-")
+                                            ("b." . "-"))))
+
 ;; Other customization
 (setq org-return-follows-link t) ; really - who wants to use the mouse
 (setq org-agenda-ignore-drawer-properties '(effort appt category)) ; not using these - speed up agendas
