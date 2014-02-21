@@ -18,4 +18,9 @@
 
 (my-keys-minor-mode 1)
 
+;; Toggle default hidden tag on sub tree
+(add-hook 'org-mode-hook 
+          (lambda ()
+            (local-set-key "\C-c\C-xh" 'org-toggle-hidden-tag)))
+
 (provide 'my-key-bindings)

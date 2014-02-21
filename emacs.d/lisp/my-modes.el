@@ -99,9 +99,9 @@
 
 ;; Agenda configuration
 (setq org-agenda-span 'day) ; Only display a single day by default
-(setq org-agenda-todo-ignore-with-date t) ; Don't show items with dates on TODO list - they're already planned for a date
 (setq org-agenda-dim-blocked-tasks t) ; Show me blocked tasks - better big picture view
 (setq org-agenda-skip-scheduled-if-done t) ; Don't show Done tasks
+(setq org-agenda-skip-deadline-if-done t) ; Don't show Done tasks
 (setq org-agenda-tags-todo-honor-ignore-options t) 
 (setq org-agenda-window-setup 'current-window)
 (setq org-agenda-start-on-weekday nil)
@@ -185,5 +185,71 @@ If OTHERS is true, skip all entries that do NOT have one of the specified tags."
     (when agenda-window
       (with-selected-window agenda-window (org-agenda-redo)))))
 (run-at-time nil 300 'eg/org-agenda-redo-in-other-window)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Custom visibility handline based on certain tags - keep some headings collapsed based on tags
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Tags that flag a subtree to be hidden during cycling
+(setq org-hidden-tags '("SENSITIVE" "NOTES"))
+
+;; Hide hidden subtrees when loading an org-mode file
+(add-hook 'org-mode-hook 
+          (lambda ()
+            (org-hide-hidden-subtrees (point-min) (point-max))))
+
+;; Hook into org-cycle to hide subtrees based on our hidden tags
+(add-hook 'org-cycle-hook 'org-cycle-hide-hidden-subtrees)
+
+(defun org-toggle-hidden-tag ()
+  "Toggles the default (first) hidden tag for the current heading."
+  (interactive)
+  (let (set)
+    (org-back-to-heading t)
+    (setq set (org-toggle-tag (first org-hidden-tags)))
+    (when set (hide-subtree))))
+
+;; Check for hidden tags after the tags are changed
+;; Disabled right now - currently fires when any tag is added, not just a hidden tag
+;(add-hook 'org-after-tags-change-hook 'org-after-tags-change-hide-hidden-subtrees)
+
+(defun org-after-tags-change-hide-hidden-subtrees ()
+  "Hides the subtree if this heading contains one of the hidden tags"
+  (interactive)
+  (save-excursion
+    (let ((tags (org-get-local-tags)))
+      (when (intersection tags org-hidden-tags :test 'string=)
+        (hide-subtree)))))
+
+;; The following code for handling custom hidden tags is based on the code for handling the special
+;; ARCHIVE tag
+
+;; Hook into org-cycle to hide any hidden sub-trees after cycling visibility
+(defun org-cycle-hide-hidden-subtrees (state)
+  "Re-hide all hidden subtrees after a visibility state change."
+  (when (and (not (looking-at (concat ".*" (org-hidden-tag-re))))
+             (not (memq state '(overview folded))))
+    (save-excursion
+      (let* ((globalp (memq state '(contents all)))
+             (beg (if globalp (point-min) (point)))
+             (end (if globalp (point-max) (org-end-of-subtree t))))
+        (org-hide-hidden-subtrees beg end)
+        (goto-char beg)))))
+
+;; Used when entering an org-file for the first time to hide hidden subtrees that may be
+;; visible given startup visibility.
+(defun org-hide-hidden-subtrees (beg end)
+  "Re-hide all hidden subtrees after a visibility state change."
+  (save-excursion
+    (let* ((re (org-hidden-tag-re)))
+      (goto-char beg)
+      (while (re-search-forward re end t)
+        (when (org-at-heading-p)
+          (org-flag-subtree t)
+          (org-end-of-subtree t))))))
+
+(defun org-hidden-tag-re ()
+  "Gets the regex that matches a hidden tag."
+  (concat ":\\(" (mapconcat 'identity org-hidden-tags "\\|") "\\):"))
 
 (provide 'my-modes)
