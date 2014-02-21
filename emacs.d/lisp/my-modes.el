@@ -28,14 +28,16 @@
 
 ;; Todo states
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WAITING(w@/!)" "|" "DONE(d!)")))
+      '((sequence "TODO(t)" "WAITING(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
 (setq org-treat-S-cursor-todo-selection-as-state-change nil) ; Allow Shift Cursor movements to fix up TODO states without logging
 (setq org-enforce-todo-dependencies t)
 (setq org-enforce-todo-checkbox-dependencies t)
 (setq org-log-done 'time)
 
 ;; Tags
-
+(setq org-fast-tag-selection-single-key 't)
+(setq org-tag-alist '(("NOTES" . ?n)
+                      ("MANAGEMENT" . ?m)))
 
 ;; Completion
 (setq org-completion-use-ido t)
