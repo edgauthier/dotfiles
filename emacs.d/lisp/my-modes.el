@@ -156,16 +156,16 @@ If OTHERS is true, skip all entries that do NOT have one of the specified tags."
     (widen)
     (show-branches)
     (let ((next-headline (save-excursion (or (outline-next-heading) (point-max))))
-	  (current-headline (or (and (org-at-heading-p)
-				     (point))
-				(save-excursion (org-back-to-heading)))))
+          (current-headline (or (and (org-at-heading-p)
+                                     (point))
+                                (save-excursion (org-back-to-heading)))))
       (if others
-	  (if (not (intersection tags (org-get-tags-at current-headline) :test 'string=))
-	      next-headline
-	    nil)
-	(if (intersection tags (org-get-tags-at current-headline) :test 'string=)
-	    next-headline
-	  nil)))))
+          (if (not (intersection tags (org-get-tags-at current-headline) :test 'string=))
+              next-headline
+            nil)
+        (if (intersection tags (org-get-tags-at current-headline) :test 'string=)
+            next-headline
+          nil)))))
 
 (defun eg/org-remove-empty-propert-drawers ()
   "*Remove all empty property drawers in current file."
@@ -184,7 +184,7 @@ If OTHERS is true, skip all entries that do NOT have one of the specified tags."
   (let ((agenda-window (get-buffer-window org-agenda-buffer-name t)))
     (when agenda-window
       (with-selected-window agenda-window (org-agenda-redo)))))
-(run-at-time nil 300 'eg/org-agenda-redo-in-other-window)
+;(run-at-time nil 300 'eg/org-agenda-redo-in-other-window)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Custom visibility handline based on certain tags - keep some headings collapsed based on tags
