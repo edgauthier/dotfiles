@@ -1,5 +1,10 @@
+;; Fix scrolling
+(setq scroll-conservatively 10000)
+
 ;; Don't prompt to follow symlinks
 (setq vc-follow-symlinks nil)
+
+;; No bell
 (setq ring-bell-function 'ignore)
 
 ;; Only Y or N prompts
