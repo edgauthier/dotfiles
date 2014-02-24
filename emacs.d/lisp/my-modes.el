@@ -120,7 +120,8 @@
 (setq org-agenda-tags-todo-honor-ignore-options t) 
 (setq org-agenda-window-setup 'current-window)
 (setq org-agenda-start-on-weekday nil)
-(setq org-agenda-hide-tags-regexp "\\(HIDDEN\\|ROUTINE\\|MORNING\\|NOTES\\)")
+(setq eg/org-agenda-hidden-tags '("HIDDEN" "ROUTINE" "MORNING" "NOTES"))
+(setq org-agenda-hide-tags-regexp (eg/regexp-or-list-of-strings eg/org-agenda-hidden-tags))
 
 ;; Highlight selected line in agenda
 (add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1))) 
@@ -292,6 +293,6 @@ If OTHERS is true, skip all entries that do NOT have one of the specified tags."
 
 (defun eg/org-hidden-tag-re ()
   "Gets the regex that matches a hidden tag."
-  (concat ":\\(" (mapconcat 'identity eg/org-hidden-tags "\\|") "\\):"))
+  (concat ":" (eg/regexp-or-list-of-strings eg/org-hidden-tags) ":"))
 
 (provide 'my-modes)

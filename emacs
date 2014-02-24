@@ -3,6 +3,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 (load-library "my-packages")
+(load-library "my-functions")
 (load-library "my-look-and-feel")
 (load-library "my-gui")
 (load-library "my-environment")
