@@ -2,11 +2,21 @@
 (require 'org)
 (require 'org-clock)
 (require 'org-checklist)
-;(require 'org-protocol)
 (require 'cl)
-;(require 'real-auto-save)
 
-;(add-hook 'org-mode-hook 'turn-on-real-auto-save)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Org-mode global key bindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; C-c bindings
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cb" 'org-iswitchb)
+(define-key global-map "\C-cc" 'org-capture)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Other customization
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
 
 ;; default directories
 (setq org-directory "~/org")
@@ -204,6 +214,11 @@ If OTHERS is true, skip all entries that do NOT have one of the specified tags."
 
 ;; Hook into org-cycle to hide subtrees based on our hidden tags
 (add-hook 'org-cycle-hook 'eg/org-cycle-hide-hidden-subtrees)
+
+;; Kep mapping to toggle default hidden tag on sub tree
+(add-hook 'org-mode-hook 
+          (lambda ()
+            (local-set-key "\C-c\C-xh" 'eg/org-toggle-hidden-tag)))
 
 (defun eg/org-toggle-hidden-tag ()
   "Toggles the default (first) hidden tag for the current heading."
