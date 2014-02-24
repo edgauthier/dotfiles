@@ -109,7 +109,10 @@
 (setq org-return-follows-link t) ; really - who wants to use the mouse
 (setq org-agenda-ignore-drawer-properties '(effort appt category)) ; not using these - speed up agendas
 
-;; Agenda configuration
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+;; Agenda customization
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
+
 (setq org-agenda-span 'day) ; Only display a single day by default
 (setq org-agenda-dim-blocked-tasks t) ; Show me blocked tasks - better big picture view
 (setq org-agenda-skip-scheduled-if-done t) ; Don't show Done tasks
@@ -181,6 +184,10 @@ If OTHERS is true, skip all entries that do NOT have one of the specified tags."
             next-headline
           nil)))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Utility functions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun eg/org-remove-empty-propert-drawers ()
   "*Remove all empty property drawers in current file."
   (interactive)
@@ -240,18 +247,17 @@ If OTHERS is true, skip all entries that do NOT have one of the specified tags."
   (set-buffer (org-get-agenda-file-buffer f))
   (eg/org-hide-hidden-subtrees (point-min) (point-max)))
         
-
 ;; Check for hidden tags after the tags are changed
 ;; Disabled right now - currently fires when any tag is added, not just a hidden tag
 ;(add-hook 'org-after-tags-change-hook 'org-after-tags-change-hide-hidden-subtrees)
 
-(defun eg/org-after-tags-change-hide-hidden-subtrees ()
-  "Hides the subtree if this heading contains one of the hidden tags"
-  (interactive)
-  (save-excursion
-    (let ((tags (org-get-local-tags)))
-      (when (intersection tags eg/org-hidden-tags :test 'string=)
-        (hide-subtree)))))
+;(defun eg/org-after-tags-change-hide-hidden-subtrees ()
+;  "Hides the subtree if this heading contains one of the hidden tags"
+;  (interactive)
+;  (save-excursion
+;    (let ((tags (org-get-local-tags)))
+;      (when (intersection tags eg/org-hidden-tags :test 'string=)
+;        (hide-subtree)))))
 
 ;; The following code for handling custom hidden tags is based on the code for handling the special
 ;; ARCHIVE tag
