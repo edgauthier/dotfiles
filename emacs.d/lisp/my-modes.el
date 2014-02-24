@@ -37,7 +37,8 @@
 ;; Tags
 (setq org-fast-tag-selection-single-key 't)
 (setq org-tag-alist '(("NOTES" . ?n)
-                      ("MANAGEMENT" . ?m)))
+                      ("MANAGEMENT" . ?m)
+                      ("HIDDEN" . ?h)))
 
 ;; Completion
 (setq org-completion-use-ido t)
@@ -47,7 +48,7 @@
 (setq org-log-into-drawer 'LOGBOOK)
 (setq org-startup-indented t)
 (setq org-catch-invisible-edits 'smart)
-(setq org-startup-folded t)
+(setq org-startup-folded 'content)
 (setq org-agenda-inhibit-startup nil)
 
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep
@@ -108,31 +109,33 @@
 
 ;; Highlight selected line in agenda
 (add-hook 'org-agenda-mode-hook '(lambda () (hl-line-mode 1))) 
-;; Disable mouse highlighting in agenda
+
 (add-hook 'org-finalize-agenda-hook
-	  (lambda () (remove-text-properties (point-min) (point-max) '(mouse-face t))))
+	  (lambda () 
+        (remove-text-properties (point-min) (point-max) '(mouse-face t)) ; Disable mouse highlighting in agenda
+        (eg/hide-hidden-subtrees-in-all-org-files))) ; Hide hidden subtrees that may have been opened while generating the agenda
 
 ;; Custom Agenda Views
 (setq org-agenda-custom-commands
       '(
 	("A" "Default Agenda View" agenda "")
-;	("a" "Custom Daily Agenda" 
-;	 ((tags-todo "morning" 
-;		  ((org-agenda-overriding-header "Morning Tasks")
-;		   (org-agenda-todo-ignore-with-date nil)
-;		   (org-agenda-todo-ignore-scheduled 'future)
-;		   (org-agenda-todo-ignore-deadlines 'future)
-;		   (org-agenda-hide-tags-regexp "morning")))
-;	  (agenda "" 
-;		  ((org-agenda-overriding-header "Today's Work")
-;		   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("morning" "routine")))))
-;	  (tags-todo "routine" 
-;		  ((org-agenda-overriding-header "Routine Maintenance")
-;		   (org-agenda-todo-ignore-with-date nil)
-;		   (org-agenda-todo-ignore-scheduled 'future)
-;		   (org-agenda-todo-ignore-deadlines 'future)
-;		   (org-agenda-hide-tags-regexp "routine"))) )
-;	 ((org-agenda-compact-blocks t)) )
+	(" " "Custom Daily Agenda" 
+	 ((tags-todo "morning" 
+		  ((org-agenda-overriding-header "Morning Tasks")
+		   (org-agenda-todo-ignore-with-date nil)
+		   (org-agenda-todo-ignore-scheduled 'future)
+		   (org-agenda-todo-ignore-deadlines 'future)
+		   (org-agenda-hide-tags-regexp "morning")))
+	  (agenda "" 
+		  ((org-agenda-overriding-header "Today's Work")
+		   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("morning" "routine")))))
+	  (tags-todo "routine" 
+		  ((org-agenda-overriding-header "Routine Maintenance")
+		   (org-agenda-todo-ignore-with-date nil)
+		   (org-agenda-todo-ignore-scheduled 'future)
+		   (org-agenda-todo-ignore-deadlines 'future)
+		   (org-agenda-hide-tags-regexp "routine"))) )
+	 ((org-agenda-compact-blocks t)) )
 	("a" "Custom Daily Agenda" 
 	 ((agenda "morning" 
 		  ((org-agenda-overriding-header "Morning Tasks")
@@ -191,65 +194,76 @@ If OTHERS is true, skip all entries that do NOT have one of the specified tags."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Tags that flag a subtree to be hidden during cycling
-(setq org-hidden-tags '("SENSITIVE" "NOTES"))
+(setq eg/org-hidden-tags '("SENSITIVE" "NOTES" "HIDDEN"))
 
 ;; Hide hidden subtrees when loading an org-mode file
 (add-hook 'org-mode-hook 
           (lambda ()
-            (org-hide-hidden-subtrees (point-min) (point-max))))
+            (eg/org-hide-hidden-subtrees (point-min) (point-max))))
 
 ;; Hook into org-cycle to hide subtrees based on our hidden tags
-(add-hook 'org-cycle-hook 'org-cycle-hide-hidden-subtrees)
+(add-hook 'org-cycle-hook 'eg/org-cycle-hide-hidden-subtrees)
 
-(defun org-toggle-hidden-tag ()
+(defun eg/org-toggle-hidden-tag ()
   "Toggles the default (first) hidden tag for the current heading."
   (interactive)
   (let (set)
     (org-back-to-heading t)
-    (setq set (org-toggle-tag (first org-hidden-tags)))
+    (setq set (org-toggle-tag (first eg/org-hidden-tags)))
     (when set (hide-subtree))))
+
+(defun eg/hide-hidden-subtrees-in-all-org-files ()
+  "Hides hidden subtrees in all org agenda files"
+  (interactive)
+  (dolist (f (org-agenda-files t))
+    (eg/hide-hidden-subtrees-in-file f)))
+
+(defun eg/hide-hidden-subtrees-in-file (f)
+  "Hides the hidden subtrees in the buffer for file f"  
+  (interactive)
+  (set-buffer (org-get-agenda-file-buffer f))
+  (eg/org-hide-hidden-subtrees (point-min) (point-max)))
+        
 
 ;; Check for hidden tags after the tags are changed
 ;; Disabled right now - currently fires when any tag is added, not just a hidden tag
 ;(add-hook 'org-after-tags-change-hook 'org-after-tags-change-hide-hidden-subtrees)
 
-(defun org-after-tags-change-hide-hidden-subtrees ()
+(defun eg/org-after-tags-change-hide-hidden-subtrees ()
   "Hides the subtree if this heading contains one of the hidden tags"
   (interactive)
   (save-excursion
     (let ((tags (org-get-local-tags)))
-      (when (intersection tags org-hidden-tags :test 'string=)
+      (when (intersection tags eg/org-hidden-tags :test 'string=)
         (hide-subtree)))))
 
 ;; The following code for handling custom hidden tags is based on the code for handling the special
 ;; ARCHIVE tag
 
 ;; Hook into org-cycle to hide any hidden sub-trees after cycling visibility
-(defun org-cycle-hide-hidden-subtrees (state)
+(defun eg/org-cycle-hide-hidden-subtrees (state)
   "Re-hide all hidden subtrees after a visibility state change."
-  (when (and (not (looking-at (concat ".*" (org-hidden-tag-re))))
+  (when (and (not (looking-at (concat ".*" (eg/org-hidden-tag-re))))
              (not (memq state '(overview folded))))
     (save-excursion
       (let* ((globalp (memq state '(contents all)))
              (beg (if globalp (point-min) (point)))
              (end (if globalp (point-max) (org-end-of-subtree t))))
-        (org-hide-hidden-subtrees beg end)
+        (eg/org-hide-hidden-subtrees beg end)
         (goto-char beg)))))
 
-;; Used when entering an org-file for the first time to hide hidden subtrees that may be
-;; visible given startup visibility.
-(defun org-hide-hidden-subtrees (beg end)
+(defun eg/org-hide-hidden-subtrees (beg end)
   "Re-hide all hidden subtrees after a visibility state change."
   (save-excursion
-    (let* ((re (org-hidden-tag-re)))
+    (let* ((re (eg/org-hidden-tag-re)))
       (goto-char beg)
       (while (re-search-forward re end t)
         (when (org-at-heading-p)
           (org-flag-subtree t)
           (org-end-of-subtree t))))))
 
-(defun org-hidden-tag-re ()
+(defun eg/org-hidden-tag-re ()
   "Gets the regex that matches a hidden tag."
-  (concat ":\\(" (mapconcat 'identity org-hidden-tags "\\|") "\\):"))
+  (concat ":\\(" (mapconcat 'identity eg/org-hidden-tags "\\|") "\\):"))
 
 (provide 'my-modes)
