@@ -38,7 +38,8 @@
 (setq org-fast-tag-selection-single-key 't)
 (setq org-tag-alist '(("NOTES" . ?n)
                       ("MANAGEMENT" . ?m)
-                      ("HIDDEN" . ?h)))
+                      ("HIDDEN" . ?h)
+                      ("SOMEDAY" . ?s)))
 
 ;; Completion
 (setq org-completion-use-ido t)
@@ -194,7 +195,7 @@ If OTHERS is true, skip all entries that do NOT have one of the specified tags."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Tags that flag a subtree to be hidden during cycling
-(setq eg/org-hidden-tags '("SENSITIVE" "NOTES" "HIDDEN"))
+(setq eg/org-hidden-tags '("HIDDEN" "NOTES" "SOMEDAY"))
 
 ;; Hide hidden subtrees when loading an org-mode file
 (add-hook 'org-mode-hook 
