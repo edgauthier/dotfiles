@@ -30,7 +30,9 @@
 ;; Capture templates
 (setq org-capture-templates
       '(("t" "Task" entry (file+headline (concat org-directory "/inbox.org") "Inbox")
-	 "* TODO %?\n:LOGBOOK:\n- Task captured on %u \\\\\n%a\n:END:\n")
+         "* TODO %?\n:LOGBOOK:\n- Task captured on %u \\\\\n%a\n:END:\n")
+        ("n" "Note" entry (file+headline (concat org-directory "/inbox.org") "Inbox")
+         "* %<%Y-%m-%d> %? :NOTES:\n:LOGBOOK:\n- Notes captured on %u \\\\\n%a\n:END:\n")
 ;	("w" "org-protocol" entry (file+headline (concat org-directory "/inbox.org") "Inbox") 
 ;	 "* TODO %i\n%u\n%a\n" :immediate-finish t)
 	))
