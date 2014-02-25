@@ -47,7 +47,7 @@
 (setq org-log-done 'time)
 
 ;; Tags
-(setq org-fast-tag-selection-single-key 't)
+(setq org-fast-tag-selection-single-key nil)
 (setq org-tag-alist '(("NOTES" . ?n)
                       ("MANAGEMENT" . ?m)
                       ("HIDDEN" . ?h)
