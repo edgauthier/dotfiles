@@ -153,15 +153,21 @@
                       (org-agenda-todo-ignore-deadlines 'future))) )
          ((org-agenda-compact-blocks t)) )
         ("a" "Custom Daily Agenda" 
-         ((agenda "MORNING" 
+         ((agenda "" 
                   ((org-agenda-overriding-header "Morning Tasks")
                    (org-agenda-skip-function '(eg/org-agenda-skip-tags '("MORNING") t)) ))
           (agenda "" 
+                  ((org-agenda-overriding-header "Due Today")
+                   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("MORNING" "ROUTINE")))
+                   (org-agenda-entry-types '(:deadline))))
+          (agenda "" 
                   ((org-agenda-overriding-header "Today's Work")
-                   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("MORNING" "ROUTINE")))))
-          (agenda "ROUTINE" 
+                   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("MORNING" "ROUTINE")))
+                   (org-agenda-entry-types '(:scheduled))))
+          (agenda "" 
                   ((org-agenda-overriding-header "Routine Maintenance")
-                   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("ROUTINE") t)) )) ))
+                   (org-agenda-skip-function '(eg/org-agenda-skip-tags '("ROUTINE") t)) )) )
+          ((org-agenda-compact-blocks nil)) )
         ("f" . "Custom Searches")
         ("ft" "Filter Headline Tags (no inheritance)"
          tags "" 
