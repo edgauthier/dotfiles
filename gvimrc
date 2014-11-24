@@ -7,7 +7,7 @@ set columns=140
 "set clipboard=unnamed
 
 if has("macunix")
-    set guifont=Menlo_Regular:h15
+    set guifont=Menlo_Regular:h13
 else
     set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
 endif
