@@ -25,3 +25,8 @@ fi
 OFEXPORT_HOME=$HOME/dev/ofexport
 export OFEXPORT_HOME
 PATH=$PATH:$OFEXPORT_HOME/bin
+
+if [ -f ~/.localrc ]; then
+    source ~/.localrc
+fi
+
