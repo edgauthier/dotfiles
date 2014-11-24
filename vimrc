@@ -12,10 +12,19 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Color schemes
+Plugin 'altercation/vim-colors-solarized'
+
+" File/buffer management
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'scrooloose/nerdtree'
+
+" Markdown support
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+" Other plugins
 Plugin 'scrooloose/syntastic'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -84,7 +93,10 @@ filetype indent on
 " make new empty files markdown by default
 autocmd BufEnter * if &filetype == "" | setlocal ft=markdown | endif
 " save markdown file with first line as filename
-nnoremap <leader>wm :execute "w ".fnameescape(strpart(getline(1),2)."\.md")<cr>
+nnoremap <leader>wm :execute "w ~/Desktop/".fnameescape(strpart(getline(1),2)."\.md")<cr>
+
+" Markdown settings
+let g:vim_markdown_initial_foldlevel=100
 
 " show whitespace
 set listchars=tab:>-,trail:·,eol:$
