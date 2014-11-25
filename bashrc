@@ -25,6 +25,12 @@ then
     . /etc/bash_completion.d/git
 fi
 
+if [ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh ]
+then
+    . /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+    GIT_PROMPT=1
+fi
+
 if [ -f /etc/bash_completion.d/git-prompt ]
 then
     . /etc/bash_completion.d/git-prompt
