@@ -1,3 +1,6 @@
+PS1='[\e[1m\u@\h\e[m \W]\$ '
+GIT_PROMPT=0 # assume we don't have git-prompt loaded
+
 if [ -f ~/.profile ]; then
     . ~/.profile
 fi
@@ -25,14 +28,19 @@ fi
 if [ -f /etc/bash_completion.d/git-prompt ]
 then
     . /etc/bash_completion.d/git-prompt
+    GIT_PROMPT=1
 fi
 
 if [ -f /usr/local/git/contrib/completion/git-prompt.sh ]
 then
     . /usr/local/git/contrib/completion/git-prompt.sh
+    GIT_PROMPT=1
 fi
 
-PS1='[\e[1m\u@\h\e[m \W$(__git_ps1 " (%s)")]\$ '
+if [ $GIT_PROMPT -eq 1 ]
+then
+    PS1='[\e[1m\u@\h\e[m \W$(__git_ps1 " (%s)")]\$ '
+fi
 
 alias l='ls -AlhF --color=auto'
 alias ls='ls -F --color=auto'
