@@ -19,6 +19,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'baeuml/summerfruit256.vim'
 
 " File/buffer management
 Plugin 'jlanzarotta/bufexplorer'
@@ -59,8 +60,6 @@ call togglebg#map("")
 "let g:solarized_termcolors=256 " Uncomment if terminal isn't using solarized colors
 set background=dark
 colorscheme solarized
-map <leader>cl :set background=light<CR>:colorscheme solarized<CR>
-map <leader>cd :set background=dark<CR>:colorscheme solarized<CR>
 map <leader>bg :ToggleBG<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
