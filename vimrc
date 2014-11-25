@@ -28,6 +28,7 @@ Plugin 'scrooloose/nerdtree'
 " Markdown support
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'dhruvasagar/vim-table-mode'
 
 " Other plugins
 Plugin 'scrooloose/syntastic'
@@ -132,6 +133,16 @@ nnoremap <leader>wm :execute "w ~/Desktop/".fnameescape(strpart(getline(1),2)."\
 
 " Markdown settings
 let g:vim_markdown_initial_foldlevel=100
+
+" Table formatting
+if exists(":Tabularize")
+    nmap <leader>mt :Tabularize /\|<CR>
+    vmap <leader>mt :Tabularize /\|<CR>
+endif
+
+" Table
+let g:table_mode_always_active = 0
+let g:table_mode_corner = '|'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File/directory settings
