@@ -7,6 +7,7 @@ let mapleader=","
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Bundle management
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 filetype off "required for Vundle
 
 " set the runtime path to include Vundle and initialize
@@ -51,6 +52,7 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " call togglebg to autoload the togglebg plugin
 call togglebg#map("")
 
@@ -64,6 +66,7 @@ map <leader>bg :ToggleBG<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Buffer settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set hidden
 nnoremap <leader>bb :b#
 nnoremap <leader>bd :bdelete
@@ -71,6 +74,7 @@ nnoremap <leader>bd :bdelete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Window settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set splitright
 set splitbelow
 nnoremap <leader>wv :new
@@ -83,12 +87,14 @@ nnoremap <C-l> <C-w>l
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 map <Leader>tc :tabclose
 map <Leader>tn :tabnew
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab, shift, and indent settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -99,6 +105,7 @@ set autoindent
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set incsearch
 set ignorecase
 set smartcase
@@ -114,6 +121,7 @@ vnoremap / /\v
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " make new empty files markdown by default
 autocmd BufEnter * if &filetype == "" | setlocal ft=markdown | endif
 
@@ -126,6 +134,7 @@ let g:vim_markdown_initial_foldlevel=100
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File/directory settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " File browser
 noremap <leader>f :NERDTreeToggle<CR>
 noremap <leader>F :NERDTreeFind<CR>
@@ -147,87 +156,19 @@ filetype plugin indent on
 syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Meta
+" Line control
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ; works like :
-nnoremap ; :
-vnoremap ; :
-
-" edit/source .vimrc/.gvimrc file
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-nnoremap <leader>eg <C-w><C-v><C-l>:e $MYGVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>sg :source $MYGVIMRC<cr>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Settings remaining to organize
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Other usefull settings
-
-set scrolloff=3
-set showmode
-set showcmd
-set wildmenu
-set wildmode=list:longest
-"set visualbell
-set noerrorbells
-set ttyfast
-set ruler
-set laststatus=2
-set statusline=%<%f\ %{fugitive#statusline()}%h%m%r%=%-14.(%l,%c%V%)\ %P
-if version >= 703
-    set relativenumber
-else
-    set number
-endif
-set backspace=indent,eol,start
-set history=1000
-set title
-set titleold=""
-set shortmess=atI
-set nojoinspaces
-
-" show whitespace
-set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>ws :set nolist!<cr>
-
-" Text width
-set wrap
-set textwidth=79
-set formatoptions=coqrnlb1
-set linebreak
-"set showbreak=>\ 
-
-" better % matching
-runtime macros/matchit.vim
-
-" folding
-set foldenable
-set foldmethod=indent
-set foldlevel=100
 
 " Bubble single lines
 nmap <S-k> [e
 nmap <S-j> ]e
+
 " Bubble multiple lines
 vmap <S-k> [egv
 vmap <S-j> ]egv
 
+" Remap J to U since we use J above for bubbling lines
 noremap <S-u> J
-
-" Visually select the text that was last edited/pasted
-nmap gV `[v`]
-
-" Make CTRL-U and CTRL-W 'undoable'
-inoremap <C-u> <C-g>u<C-u>
-inoremap <C-w> <C-g>u<C-w>
-
-" YankRing settings
-" Bypass single letter deletes
-let g:yankring_min_element_length = 2
-let g:yankring_history_file = '.yankring_history'
 
 " move by screen lines, not file lines 
 " Map for both Windows and Mac.
@@ -252,6 +193,85 @@ vmap <A-4> g$
 vmap <A-6> g^
 vmap <A-0> g0
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim chrome
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set showmode
+set showcmd
+set title
+set titleold=""
+
+" Status line settings
+set ruler
+set laststatus=2
+set statusline=%<%f\ %{fugitive#statusline()}%h%m%r%=%-14.(%l,%c%V%)\ %P
+
+" Line numbers
+if version >= 703
+    set relativenumber
+else
+    set number
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Meta
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" ; works like :
+nnoremap ; :
+vnoremap ; :
+
+" edit/source .vimrc/.gvimrc file
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>eg <C-w><C-v><C-l>:e $MYGVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sg :source $MYGVIMRC<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Settings remaining to organize
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set ttyfast
+set noerrorbells
+set shortmess=atI
+
+set scrolloff=3
+
+set wildmenu
+set wildmode=list:longest
+
+set backspace=indent,eol,start
+set nojoinspaces
+
+set history=1000
+
+" show whitespace
+set listchars=tab:>-,trail:·,eol:$
+nmap <silent> <leader>ws :set nolist!<cr>
+
+" Text width
+set wrap
+set textwidth=79
+set formatoptions=coqrnlb1
+set linebreak
+"set showbreak=>\ 
+
+" better % matching
+runtime macros/matchit.vim
+
+" Visually select the text that was last edited/pasted
+nmap gV `[v`]
+
+" Make CTRL-U and CTRL-W 'undoable'
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+
+" YankRing settings
+" Bypass single letter deletes
+let g:yankring_min_element_length = 2
+let g:yankring_history_file = '.yankring_history'
+
 " enable the mouse to move windows
 set mouse=a
 " indent a block of text between { }
@@ -262,7 +282,6 @@ map <F3> my?{%kmzj%j:.,'zs/^  \\|^  //`y
 map <F5> mzI<!-- A -->`z5l
 " html/xml uncomment
 map <F6> mz0/<!-- df / -->df>`z5h
-
 
 nnoremap <leader>lpu /\vend.*customO<c-r>*<esc>
 
