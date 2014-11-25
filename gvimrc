@@ -15,4 +15,4 @@ endif
 set guioptions+=b
 
 set background=light
-colorscheme summerfruit256
+colorscheme macvim
