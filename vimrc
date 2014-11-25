@@ -54,7 +54,6 @@ filetype plugin indent on    " required
 " call togglebg to autoload the togglebg plugin
 call togglebg#map("")
 
-" Color settings
 "let g:solarized_termcolors=256 " Uncomment if terminal isn't using solarized colors
 set background=dark
 colorscheme solarized
@@ -63,18 +62,17 @@ map <leader>cd :set background=dark<CR>:colorscheme solarized<CR>
 map <leader>bg :ToggleBG<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Buffer mappings
+" Buffer settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set hidden
 nnoremap <leader>bb :b#
 nnoremap <leader>bd :bdelete
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Window mappings
+" Window settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set splitright
 set splitbelow
-"nnoremap <leader>wv <C-w><C-v>l
-"nnoremap <leader>wh <C-w><C-n>j
 nnoremap <leader>wv :new
 nnoremap <leader>wh :vnew
 nnoremap <C-h> <C-w>h
@@ -83,7 +81,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tab mappings
+" Tab settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <Leader>tc :tabclose
 map <Leader>tn :tabnew
@@ -97,6 +95,21 @@ set softtabstop=4
 set shiftround
 set expandtab
 set autoindent
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Search settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+set gdefault
+set hlsearch
+nnoremap <silent> <leader><space> :noh<cr> " clear search highlighting
+
+" Regexp searches by default
+nnoremap / /\v
+vnoremap / /\v
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown settings
@@ -113,14 +126,12 @@ let g:vim_markdown_initial_foldlevel=100
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File/directory settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " File browser
 noremap <leader>f :NERDTreeToggle<CR>
 noremap <leader>F :NERDTreeFind<CR>
 
-"   Edit another file in the same directory as the current file
-"   uses expression to extract path from current file's path
-"  (thanks Douglas Potts)
+" Edit another file in the same directory as the current file
+" uses expression to extract path from current file's path
 if has("unix")
     map <leader>ee :e <C-R>=expand("%:p:h") . "/" <CR>
 else
@@ -130,10 +141,14 @@ endif
 " Set working directory to current directory
 nnoremap <leader>wd :cd %:p:h<cr>
 
+set encoding=utf-8
+set fileformats=unix,dos " prefer unix fileformatting over dos, even on Windows
+filetype plugin indent on
+syntax enable
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Meta
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " ; works like :
 nnoremap ; :
 vnoremap ; :
@@ -151,9 +166,6 @@ nnoremap <leader>sg :source $MYGVIMRC<cr>
 
 " Other usefull settings
 
-set encoding=utf-8
-" prefer unix fileformatting over dos, even on Windows
-set fileformats=unix,dos
 set scrolloff=3
 set showmode
 set showcmd
@@ -171,34 +183,15 @@ else
     set number
 endif
 set backspace=indent,eol,start
-set hidden
 set history=1000
 set title
 set titleold=""
 set shortmess=atI
 set nojoinspaces
-syntax enable
-filetype on
-filetype plugin on
-filetype indent on
 
 " show whitespace
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>ws :set nolist!<cr>
-
-" Searching
-
-set incsearch
-set ignorecase
-set smartcase
-set showmatch
-set gdefault
-set hlsearch
-" clear search highlighting
-nnoremap <silent> <leader><space> :noh<cr>
-" Regexp changes
-nnoremap / /\v
-vnoremap / /\v
 
 " Text width
 set wrap
@@ -269,11 +262,6 @@ map <F3> my?{%kmzj%j:.,'zs/^  \\|^  //`y
 map <F5> mzI<!-- A -->`z5l
 " html/xml uncomment
 map <F6> mz0/<!-- df / -->df>`z5h
-
-" edit file in new tab
-
-" jump to current window/tab if buffer is already open
-"set switchbuf=usetab
 
 
 nnoremap <leader>lpu /\vend.*customO<c-r>*<esc>
