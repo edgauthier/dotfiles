@@ -1,8 +1,12 @@
-" disable vi compatibility mode
+" Disable vi compatibility mode
 set nocompatible
+
+" Set custom leader character
+let mapleader=","
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Bundle management
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype off "required for Vundle
 
 " set the runtime path to include Vundle and initialize
@@ -43,20 +47,107 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let mapleader=","
-
+" Colorscheme settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " call togglebg to autoload the togglebg plugin
 call togglebg#map("")
 
-" Tab, shifting & indent settings
+" Color settings
+"let g:solarized_termcolors=256 " Uncomment if terminal isn't using solarized colors
+set background=dark
+colorscheme solarized
+map <leader>cl :set background=light<CR>:colorscheme solarized<CR>
+map <leader>cd :set background=dark<CR>:colorscheme solarized<CR>
+map <leader>bg :ToggleBG<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Buffer mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>bb :b#
+nnoremap <leader>bd :bdelete
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Window mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set splitright
+set splitbelow
+"nnoremap <leader>wv <C-w><C-v>l
+"nnoremap <leader>wh <C-w><C-n>j
+nnoremap <leader>wv :new
+nnoremap <leader>wh :vnew
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tab mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>tc :tabclose
+map <Leader>tn :tabnew
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tab, shift, and indent settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set shiftround
 set expandtab
 set autoindent
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Markdown settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" make new empty files markdown by default
+autocmd BufEnter * if &filetype == "" | setlocal ft=markdown | endif
+
+" save markdown file with first line as filename
+nnoremap <leader>wm :execute "w ~/Desktop/".fnameescape(strpart(getline(1),2)."\.md")<cr>
+
+" Markdown settings
+let g:vim_markdown_initial_foldlevel=100
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File/directory settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" File browser
+noremap <leader>f :NERDTreeToggle<CR>
+noremap <leader>F :NERDTreeFind<CR>
+
+"   Edit another file in the same directory as the current file
+"   uses expression to extract path from current file's path
+"  (thanks Douglas Potts)
+if has("unix")
+    map <leader>ee :e <C-R>=expand("%:p:h") . "/" <CR>
+else
+    map <leader>ee :e <C-R>=expand("%:p:h") . "\\" <CR>
+endif
+
+" Set working directory to current directory
+nnoremap <leader>wd :cd %:p:h<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Meta
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" ; works like :
+nnoremap ; :
+vnoremap ; :
+
+" edit/source .vimrc/.gvimrc file
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>eg <C-w><C-v><C-l>:e $MYGVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sg :source $MYGVIMRC<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Settings remaining to organize
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Other usefull settings
 
@@ -90,13 +181,6 @@ syntax enable
 filetype on
 filetype plugin on
 filetype indent on
-" make new empty files markdown by default
-autocmd BufEnter * if &filetype == "" | setlocal ft=markdown | endif
-" save markdown file with first line as filename
-nnoremap <leader>wm :execute "w ~/Desktop/".fnameescape(strpart(getline(1),2)."\.md")<cr>
-
-" Markdown settings
-let g:vim_markdown_initial_foldlevel=100
 
 " show whitespace
 set listchars=tab:>-,trail:·,eol:$
@@ -152,24 +236,6 @@ inoremap <C-w> <C-g>u<C-w>
 let g:yankring_min_element_length = 2
 let g:yankring_history_file = '.yankring_history'
 
-" edit .vimrc file
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-nnoremap <leader>eg <C-w><C-v><C-l>:e $MYGVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>sg :source $MYGVIMRC<cr>
-
-"   Edit another file in the same directory as the current file
-"   uses expression to extract path from current file's path
-"  (thanks Douglas Potts)
-if has("unix")
-    map <leader>ee :e <C-R>=expand("%:p:h") . "/" <CR>
-else
-    map <leader>ee :e <C-R>=expand("%:p:h") . "\\" <CR>
-endif
-
-" Set working directory to current directory
-nnoremap <leader>wd :cd %:p:h<cr>
-
 " move by screen lines, not file lines 
 " Map for both Windows and Mac.
 nmap <D-j> gj
@@ -192,43 +258,6 @@ vmap <A-k> gk
 vmap <A-4> g$
 vmap <A-6> g^
 vmap <A-0> g0
-
-" ; works like :
-nnoremap ; :
-vnoremap ; :
-
-" window control
-set splitright
-set splitbelow
-nnoremap <leader>wv <C-w><C-v>l
-nnoremap <leader>wh <C-w><C-n>j
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Tab mappings
-map <Leader>tc :tabclose
-map <Leader>tn :tabnew
-
-" Buffer mappings
-nnoremap <leader>bb :b#
-nnoremap <leader>bd :bdelete
-
-" Color settings
-set background=dark
-let g:solarized_termcolors=16
-"let g:solarized_termcolors=256
-colorscheme solarized
-map <leader>cl :set background=light<CR>:colorscheme solarized<CR>
-map <leader>cd :set background=dark<CR>:colorscheme solarized<CR>
-map <leader>bg :ToggleBG<CR>
-
-"
-noremap <leader>f :NERDTreeToggle<CR>
-noremap <leader>F :NERDTreeFind<CR>
-
-" other settings to review/cleanup
 
 " enable the mouse to move windows
 set mouse=a
