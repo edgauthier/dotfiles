@@ -83,6 +83,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" enable the mouse to move windows
+set mouse=a
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -155,6 +158,47 @@ filetype plugin indent on
 syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Editor settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" deleting/joining across lines
+set backspace=indent,eol,start
+set nojoinspaces
+
+" Keep 3 lines at the top/bottom when scrolling
+set scrolloff=3
+
+" mapping to show whitespace
+set listchars=tab:>-,trail:·,eol:$
+nmap <silent> <leader>ws :set nolist!<cr>
+
+" Text width
+set wrap
+set textwidth=79
+set formatoptions=coqrnlb1
+set linebreak
+
+" autocomplete settings
+set wildmenu
+set wildmode=list:longest
+
+" better % matching
+runtime macros/matchit.vim
+
+" map tab/shift+tab to indent/outdent
+nmap <Tab> >>
+nmap <S-Tab> <<
+imap <Tab> <C-t>
+imap <S-Tab> <C-d>
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+
+" html/xml comment
+map <F5> mzI<!-- A -->`z5l
+" html/xml uncomment
+map <F6> mz0/<!-- df / -->df>`z5h
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Line control
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -193,7 +237,23 @@ vmap <A-6> g^
 vmap <A-0> g0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim chrome
+" Copy/paste undo/redo settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Make CTRL-U and CTRL-W 'undoable'
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+
+" Visually select the text that was last edited/pasted
+nmap gV `[v`]
+
+" YankRing settings
+" Bypass single letter deletes
+let g:yankring_min_element_length = 2
+let g:yankring_history_file = '.yankring_history'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim chrome/behavior
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set showmode
@@ -213,6 +273,11 @@ else
     set number
 endif
 
+set ttyfast
+set noerrorbells
+set shortmess=atI
+set history=1000
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Meta
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -228,59 +293,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>sg :source $MYGVIMRC<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Settings remaining to organize
+" Miscellaneous
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set ttyfast
-set noerrorbells
-set shortmess=atI
-
-set scrolloff=3
-
-set wildmenu
-set wildmode=list:longest
-
-set backspace=indent,eol,start
-set nojoinspaces
-
-set history=1000
-
-" show whitespace
-set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>ws :set nolist!<cr>
-
-" Text width
-set wrap
-set textwidth=79
-set formatoptions=coqrnlb1
-set linebreak
-"set showbreak=>\ 
-
-" better % matching
-runtime macros/matchit.vim
-
-" Visually select the text that was last edited/pasted
-nmap gV `[v`]
-
-" Make CTRL-U and CTRL-W 'undoable'
-inoremap <C-u> <C-g>u<C-u>
-inoremap <C-w> <C-g>u<C-w>
-
-" YankRing settings
-" Bypass single letter deletes
-let g:yankring_min_element_length = 2
-let g:yankring_history_file = '.yankring_history'
-
-" enable the mouse to move windows
-set mouse=a
-" indent a block of text between { }
-map <F4> my?{%kmzj%j:.,'zs/^.*$/  &/`y 
-" unindent a block of text between { }
-map <F3> my?{%kmzj%j:.,'zs/^  \\|^  //`y
-" html/xml comment
-map <F5> mzI<!-- A -->`z5l
-" html/xml uncomment
-map <F6> mz0/<!-- df / -->df>`z5h
-
+" Custom shortcut for pasting into Perforce protect file
 nnoremap <leader>lpu /\vend.*customO<c-r>*<esc>
-
