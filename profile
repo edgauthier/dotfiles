@@ -12,9 +12,6 @@ export PATH
 EDITOR=/usr/bin/vim
 export EDITOR
 
-TERM=xterm-256color
-export TERM
-
 WORKON_HOME=$HOME/.virtualenvs
 export WORKON_HOME
 
