@@ -20,6 +20,7 @@ Plugin 'gmarik/Vundle.vim'
 " Color schemes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'baeuml/summerfruit256.vim'
+Plugin 'chriskempson/base16-vim'
 
 " File/buffer management
 Plugin 'jlanzarotta/bufexplorer'
@@ -57,11 +58,17 @@ filetype plugin indent on    " required
 
 " call togglebg to autoload the togglebg plugin
 call togglebg#map("")
+map <leader>bg :ToggleBG<CR>
+
+set background=dark
+
+" leave the default colorscheme for now
 
 "let g:solarized_termcolors=256 " Uncomment if terminal isn't using solarized colors
-set background=dark
-colorscheme solarized
-map <leader>bg :ToggleBG<CR>
+"colorscheme solarized
+
+" let base16colorspace=256  " Access colors present in 256 colorspace
+" colorscheme base16-default
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Buffer settings
