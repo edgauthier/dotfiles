@@ -2,6 +2,7 @@ Installation
 ============
 
     git clone git@github.com:edgauthier/dotfiles.git <dotfiles repo>
+    git clone https://github.com/gmarik/vundle.git <dotfiles repo>/vim/bundle/vundle
     cd <dotfiles repo>
     git submodule update --init
     git config --global core.excludesfile <absolute path to dotfiles repo>/gitignore-global
