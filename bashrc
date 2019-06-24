@@ -50,6 +50,7 @@ fi
 
 alias l='ls -AlhF --color=auto'
 alias ls='ls -F --color=auto'
+alias dps='docker ps | awk -F " {2,}" "{print $7}"'
 
 # bash on the Mac doesn't use the same option for colored output
 if [ "$TERM_PROGRAM" == "Apple_Terminal" ] || [ "$TERM_PROGRAM" == "iTerm.app" ]; then
@@ -58,3 +59,14 @@ if [ "$TERM_PROGRAM" == "Apple_Terminal" ] || [ "$TERM_PROGRAM" == "iTerm.app" ]
 fi
 
 umask 002
+
+alias nbash='docker run -it --rm \
+    --net=bridge \
+    -u 1000:1000 \
+    -p 8000:8000 \
+    -v "$(pwd)":"/data" -w "/data" \
+    -v "/srv/docker/node/npm-global":"/npm-global" \
+    -e NPM_CONFIG_PREFIX=/npm-global \
+    -e PATH=/npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+    node bash'
+
