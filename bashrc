@@ -48,6 +48,6 @@ if [ -f ~/.local_bashrc ]; then
     source ~/.local_bashrc
 fi
 
-if [ -f ~/.env ]; then
-    . ~/.env
+if [ -f ~/.env.sh ]; then
+    . ~/.env.sh
 fi
