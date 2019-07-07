@@ -144,8 +144,9 @@ fi
   emulate -L zsh && setopt no_unset pipe_fail
 
   typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-      dir  # current directory
-      vcs  # git status
+      context                 # user@host
+      dir                     # current directory
+      vcs                     # git status
   )
 
   typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
@@ -157,7 +158,6 @@ fi
       # pyenv                 # python environment (https://github.com/pyenv/pyenv)
       # kubecontext           # current kubernetes context (https://kubernetes.io/)
       custom_rprompt          # the output of function `custom_rprompt()` if it is defined
-      context                 # user@host
       # time                  # current time
   )
 
@@ -268,7 +268,8 @@ fi
   typeset -g POWERLEVEL9K_CUSTOM_RPROMPT_FOREGROUND=$(_pp_c 4 12)
 
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,ROOT,REMOTE_SUDO,REMOTE,SUDO}_BACKGROUND=none
-  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,REMOTE_SUDO,REMOTE,SUDO}_FOREGROUND=$(_pp_c 7 244)
+  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_FOREGROUND=$(_pp_c 7 244)
+  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE_SUDO,REMOTE}_FOREGROUND=$(_pp_c 15 231)
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=$(_pp_c 3 11)
 
   typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND=none
