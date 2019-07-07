@@ -71,6 +71,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
 sudo
 dircycle
+git
 jsontools
 osx
 vscode
