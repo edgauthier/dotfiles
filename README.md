@@ -5,6 +5,7 @@ Installation
 
     git clone https://github.com/edgauthier/dotfiles.git <dotfiles repo>
     git clone https://github.com/VundleVim/Vundle.vim.git <dotfiles repo>/vim/bundle/Vundle.vim
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
     cd <dotfiles repo>
     git submodule update --init
