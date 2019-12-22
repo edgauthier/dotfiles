@@ -69,12 +69,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-sudo
-dircycle
+sudo # Press ESC twice to add sudo to line
+dircycle # CTRL+SHIFT+ LEFT|RIGHT
 git
-jsontools
-osx
-vscode
+jsontools #pp_json, is_json, urlencode_json, urldecode_json
+osx # ofd, pfd, pfs, cdf, pushdf, quick-look, tab
+vscode # vsc, vscd(iff), vscg(oto), vscn(ew), vscr(euse), vscw(ait)
 colored-man-pages
 )
 
