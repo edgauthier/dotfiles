@@ -13,6 +13,12 @@ Installation
     
     To complete the installation of the Vim plugins, start Vim and run :PluginInstall
 
+    To get tmux man lookups to work with <M> add the following line:
+
+    `nnoremap <silent><buffer> M :call tmux#man()<CR>`
+
+    to the file `~/.vim/bundle/vim-tmux/ftplugin/tmux.vim`
+
 Linux
 -----
 
