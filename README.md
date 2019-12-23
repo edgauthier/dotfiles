@@ -11,13 +11,13 @@ Installation
     git submodule update --init
     git config --global core.excludesfile <absolute path to dotfiles repo>/gitignore-global
     
-    To complete the installation of the Vim plugins, start Vim and run :PluginInstall
+To complete the installation of the Vim plugins, start Vim and run `:PluginInstall`
 
-    To get tmux man lookups to work with <M> add the following line:
+To get tmux man lookups to work with <M> add the following line:
 
-    `nnoremap <silent><buffer> M :call tmux#man()<CR>`
+`nnoremap <silent><buffer> M :call tmux#man()<CR>`
 
-    to the file `~/.vim/bundle/vim-tmux/ftplugin/tmux.vim`
+to the file `~/.vim/bundle/vim-tmux/ftplugin/tmux.vim`
 
 Linux
 -----
