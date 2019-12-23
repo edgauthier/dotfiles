@@ -24,15 +24,14 @@ Windows
 1. Edit *_vimrc* and set **$DOTFILES** to the path of the cloned dotfiles repository.
 1. Edit *_gvimrc* and set **$DOTFILES** to the path of the cloned dotfiles repository.
 
-Configuration
-=============
+Vim Configuration
+=================
 
-*optional*
-
-To complete the installation of the Vim plugins, start Vim and run `:PluginInstall`
-
-To get tmux man lookups to work with <M> add the following line:
+To complete the installation of the Vim plugins, start Vim and run `:PluginInstall`. Then add the following line:
 
 `nnoremap <silent><buffer> M :call tmux#man()<CR>`
 
 to the file `~/.vim/bundle/vim-tmux/ftplugin/tmux.vim`
+
+This will allow `M` in normal mode to perform a keyword lookup for .tmux.conf.
+I use `M` for this instead of `K` as I have `K` remapped in my .vimrc.
