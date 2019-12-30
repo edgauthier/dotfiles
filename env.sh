@@ -23,7 +23,8 @@ alias l='ls -AlhF --color=auto'
 alias ls='ls -F --color=auto'
 
 # bash on the Mac doesn't use the same option for colored output
-if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] || [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
+# Do the same for VSCode, which I only use on the Mac right now
+if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] || [[ "$TERM_PROGRAM" == "iTerm.app" ]] || [[ "$TERM_PROGRAM" == "vscode" ]] ; then
     alias l='ls -AlhFG'
     alias ls='ls -FG'
 fi
