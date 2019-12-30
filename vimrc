@@ -41,6 +41,7 @@ Plugin 'vim-scripts/YankRing.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tmux-plugins/vim-tmux'
+Plugin 'tpope/vim-obsession'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -87,8 +88,8 @@ nnoremap <leader>bd :bdelete
 
 set splitright
 set splitbelow
-nnoremap <leader>wv :new
-nnoremap <leader>wh :vnew
+nnoremap <leader>wv :vnew
+nnoremap <leader>wh :new
 let g:tmux_navigator_disable_when_zoomed = 1
 
 " enable the mouse to move windows
@@ -192,7 +193,7 @@ nmap <silent> <leader>ws :set nolist!<cr>
 
 " Text width
 set wrap
-set textwidth=79
+set textwidth=76
 set formatoptions=coqrnlb1
 set linebreak
 
@@ -279,6 +280,7 @@ let g:yankring_history_file = '.yankring_history'
 
 set showmode
 set showcmd
+let &titlestring = @%
 set title
 set titleold=""
 
@@ -308,8 +310,10 @@ nnoremap ; :
 vnoremap ; :
 
 " edit/source .vimrc/.gvimrc file
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
-nnoremap <leader>eg <C-w><C-v><C-l>:e $MYGVIMRC<cr>
+" nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+" nnoremap <leader>eg <C-w><C-v><C-l>:e $MYGVIMRC<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
+nnoremap <leader>eg :e $MYGVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>sg :source $MYGVIMRC<cr>
 
