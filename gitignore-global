@@ -3,3 +3,5 @@
 *.pyc
 .hg
 doc/tags
+Session.vim
+node_modules/
