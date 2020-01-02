@@ -280,7 +280,7 @@ let g:yankring_history_file = '.yankring_history'
 
 set showmode
 set showcmd
-let &titlestring = @%
+auto BufEnter * let &titlestring=@%
 set title
 set titleold=""
 
