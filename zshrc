@@ -113,3 +113,5 @@ if [[ -f ~/.env.sh ]]; then
     . ~/.env.sh
 fi
 
+
+test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
