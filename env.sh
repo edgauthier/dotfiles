@@ -31,7 +31,7 @@ fi
 
 umask 002
 
-alias dps='docker ps | awk -F " {2,}" "{print $7}"'
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.ID}}"'
 
 alias nbash='docker run -it --rm \
     --net=bridge \
