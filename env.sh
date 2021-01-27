@@ -51,3 +51,5 @@ if [[ -f ~/.local_env.sh ]]; then
     source ~/.local_env.sh
 fi
 
+# Disable flow control in terminal
+stty -ixon
