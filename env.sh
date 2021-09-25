@@ -52,6 +52,8 @@ if [[ -f ~/.local_env.sh ]]; then
 fi
 
 alias fd=fdfind
+alias fzf="fzf --height=18 --layout=reverse --preview='head {}'"
+alias vifz='vi $(fzf)'
 
 # Disable flow control in terminal
 stty -ixon
