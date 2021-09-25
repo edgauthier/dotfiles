@@ -25,6 +25,8 @@ Plugin 'chriskempson/base16-vim'
 " File/buffer management
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'scrooloose/nerdtree'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " Markdown support
 Plugin 'godlygeek/tabular'

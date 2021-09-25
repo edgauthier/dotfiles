@@ -6,7 +6,7 @@ if [[ -d /usr/local/git/bin ]]; then
     export PATH
 fi
 
-PATH=/usr/local/bin:~/bin:~/dev/python:$PATH
+PATH=/usr/local/bin:~/bin:~/dev/python:~/.local/bin:$PATH
 export PATH
 
 EDITOR=/usr/bin/vim
@@ -50,6 +50,8 @@ export NVM_DIR="$HOME/.nvm"
 if [[ -f ~/.local_env.sh ]]; then
     source ~/.local_env.sh
 fi
+
+alias fd=fdfind
 
 # Disable flow control in terminal
 stty -ixon
