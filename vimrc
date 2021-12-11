@@ -18,9 +18,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Color schemes
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'baeuml/summerfruit256.vim'
-Plugin 'chriskempson/base16-vim'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'baeuml/summerfruit256.vim'
+"Plugin 'chriskempson/base16-vim'
 
 " File/buffer management
 Plugin 'jlanzarotta/bufexplorer'
@@ -62,9 +62,9 @@ filetype plugin indent on    " required
 " Colorscheme settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" call togglebg to autoload the togglebg plugin
-call togglebg#map("")
-map <leader>bg :ToggleBG<CR>
+" call togglebg to autoload the togglebg plugin as part of Solarized
+" call togglebg#map("")
+"map <leader>bg :ToggleBG<CR>
 
 set background=dark
 
