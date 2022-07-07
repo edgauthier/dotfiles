@@ -72,7 +72,7 @@ plugins=(
 dircycle # CTRL+SHIFT+ LEFT|RIGHT
 git
 jsontools #pp_json, is_json, urlencode_json, urldecode_json
-osx # ofd, pfd, pfs, cdf, pushdf, quick-look, tab
+macos # ofd, pfd, pfs, cdf, pushdf, quick-look, tab
 vscode # vsc, vscd(iff), vscg(oto), vscn(ew), vscr(euse), vscw(ait)
 colored-man-pages
 )
