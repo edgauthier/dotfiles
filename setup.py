@@ -61,9 +61,9 @@ for fileName in os.listdir(dotfiles):
 ################################################################################
 
 gitConfigArgs = ['git', 'config', '--global']
-for setting, settingValue in gitSettings.iteritems():
+for setting, settingValue in gitSettings.items():
     if settingValue == None:
-        settingValue = raw_input(setting + ' = ')
+        settingValue = input(setting + ' = ')
     if len(settingValue) > 0:
         call(gitConfigArgs + [setting, settingValue])
 
@@ -71,8 +71,8 @@ for setting, settingValue in gitSettings.iteritems():
 # set if gitconfig wasn't set up already (such as with a fresh clone.
 dotfilesConfigFile = os.path.join(dotfiles,'.git','config')
 gitConfigArgs = ['git', 'config', '-f', dotfilesConfigFile]
-for setting, settingValue in dotfilesSettings.iteritems():
+for setting, settingValue in dotfilesSettings.items():
     if settingValue == None:
-        settingValue = raw_input('[dotfiles] '  + setting + ' = ')
+        settingValue = input('[dotfiles] '  + setting + ' = ')
     if len(settingValue) > 0:
         call(gitConfigArgs + [setting, settingValue])
