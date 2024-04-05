@@ -24,10 +24,19 @@ Windows
 1. Edit *_vimrc* and set **$DOTFILES** to the path of the cloned dotfiles repository.
 1. Edit *_gvimrc* and set **$DOTFILES** to the path of the cloned dotfiles repository.
 
+tmux Configuration
+==================
+
+Install tpm if needed
+
+`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+
 Vim Configuration
 =================
 
-To complete the installation of the Vim plugins, start Vim and run `:PluginInstall`. Then add the following line:
+To complete the installation of the Vim plugins, start Vim and run `:PluginInstall`. If necessary (e.g. when running Raspberry Pi OS Lite), install the full version of vim.
+
+Then add the following line:
 
 `nnoremap <silent><buffer> M :call tmux#man()<CR>`
 
