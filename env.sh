@@ -19,6 +19,9 @@ if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
+[ -e ~/.dircolors ] && eval $(dircolors -b ~/.dircolors) || 
+    eval $(dircolors -b)
+
 alias l='ls -AlhF --color=auto'
 alias ls='ls -F --color=auto'
 
@@ -32,6 +35,7 @@ fi
 umask 002
 
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.ID}}"'
+alias dpsp='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.ID}}\t{{.Ports}}"'
 
 alias nbash='docker run -it --rm \
     --net=bridge \
