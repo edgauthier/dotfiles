@@ -18,7 +18,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Color schemes
-"Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 "Plugin 'baeuml/summerfruit256.vim'
 "Plugin 'chriskempson/base16-vim'
 
@@ -63,8 +63,8 @@ filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " call togglebg to autoload the togglebg plugin as part of Solarized
-" call togglebg#map("")
-"map <leader>bg :ToggleBG<CR>
+call togglebg#map("")
+map <leader>bg :ToggleBG<CR>
 
 set background=dark
 
@@ -142,7 +142,7 @@ autocmd BufEnter * if &filetype == "" | setlocal ft=markdown | endif
 nnoremap <leader>wm :execute "w ~/Desktop/".fnameescape(strpart(getline(1),2)."\.md")<cr>
 
 " Markdown settings
-let g:vim_markdown_initial_foldlevel=100
+"let g:vim_markdown_initial_foldlevel=100
 
 " Table formatting
 if exists(":Tabularize")
