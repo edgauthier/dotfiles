@@ -72,10 +72,14 @@ plugins=(
 dircycle # CTRL+SHIFT+ LEFT|RIGHT
 git
 jsontools #pp_json, is_json, urlencode_json, urldecode_json
-macos # ofd, pfd, pfs, cdf, pushdf, quick-look, tab
 vscode # vsc, vscd(iff), vscg(oto), vscn(ew), vscr(euse), vscw(ait)
 colored-man-pages
 )
+
+# Add macOS plugin only on macOS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    plugins+=(macos)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
