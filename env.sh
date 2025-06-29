@@ -19,15 +19,15 @@ if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-[ -e ~/.dircolors ] && eval $(dircolors -b ~/.dircolors) || 
-    eval $(dircolors -b)
-
-alias l='ls -AlhF --color=auto'
-alias ls='ls -F --color=auto'
-
-# bash on the Mac doesn't use the same option for colored output
-# Do the same for VSCode, which I only use on the Mac right now
-if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] || [[ "$TERM_PROGRAM" == "iTerm.app" ]] || [[ "$TERM_PROGRAM" == "vscode" ]] ; then
+# Set up colored ls output
+if command -v dircolors > /dev/null 2>&1; then
+    # Linux with dircolors
+    [ -e ~/.dircolors ] && eval $(dircolors -b ~/.dircolors) || eval $(dircolors -b)
+    alias ls='ls -F --color=auto'
+    alias l='ls -AlhF --color=auto'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS
+    export LSCOLORS="ExFxBxDxCxegedabagacad"
     alias l='ls -AlhFG'
     alias ls='ls -FG'
 fi
