@@ -34,8 +34,13 @@ fi
 
 umask 002
 
-alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.ID}}"'
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.ID}}" | tail -n +2 | sort'
 alias dpsp='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.ID}}\t{{.Ports}}"'
+alias dcu='docker compose up -d --remove-orphans'
+alias dcd='docker compose down'
+alias dcl='docker compose logs -f'
+alias dcr='docker compose restart'
+alias dip='docker image prune -a -f'
 
 alias nbash='docker run -it --rm \
     --net=bridge \
