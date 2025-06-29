@@ -55,5 +55,7 @@ alias fd=fdfind
 alias fzf="fzf --height=18 --layout=reverse --preview='head {}'"
 alias vifz='vi $(fzf)'
 
+alias lg=lazygit
+
 # Disable flow control in terminal
 stty -ixon
