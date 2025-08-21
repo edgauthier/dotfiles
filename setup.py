@@ -32,8 +32,13 @@ old_dotfiles = os.path.expanduser('~/.old-dotfiles')
 
 # format different paths for a given file
 def paths(fileName):
-    homeFile = os.path.expanduser('~/.' + fileName)
-    oldFile = os.path.join(old_dotfiles,fileName)
+    # Special case for nvim config directory
+    if fileName == 'nvim':
+        homeFile = os.path.expanduser('~/.config/nvim')
+        oldFile = os.path.join(old_dotfiles, 'config-nvim')
+    else:
+        homeFile = os.path.expanduser('~/.' + fileName)
+        oldFile = os.path.join(old_dotfiles,fileName)
     dotFile = os.path.join(dotfiles,fileName)
     return (homeFile, oldFile, dotFile)
 
@@ -45,6 +50,14 @@ except (OSError):
 for fileName in os.listdir(dotfiles):
     if fileName in excludedFiles: continue
     homeFile, oldFile, dotFile = paths(fileName)
+
+    # Special handling for nvim - ensure ~/.config directory exists
+    if fileName == 'nvim':
+        config_dir = os.path.expanduser('~/.config')
+        try:
+            os.makedirs(config_dir, exist_ok=True)
+        except (OSError):
+            pass
 
     try:
         os.rename(homeFile,oldFile)

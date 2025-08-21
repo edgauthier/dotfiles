@@ -7,3 +7,7 @@ vim/spell/*.spl
 emacs.d/elpa/
 emacs.d/auto-save-list/
 emacs.d/bookmarks
+
+# Neovim generated files
+nvim/lazy-lock.json
+nvim/.DS_Store
