@@ -38,6 +38,7 @@ opt.ruler = true
 opt.laststatus = 2
 opt.relativenumber = true
 opt.number = true
+opt.cursorline = true
 
 -- Performance and behavior
 opt.ttyfast = true

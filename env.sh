@@ -9,7 +9,7 @@ fi
 PATH=/usr/local/bin:~/bin:~/dev/python:~/.local/bin:$PATH
 export PATH
 
-EDITOR=/usr/bin/vim
+EDITOR=nvim
 export EDITOR
 
 WORKON_HOME=$HOME/.virtualenvs
@@ -63,6 +63,10 @@ fi
 alias fd=fdfind
 alias fzf="fzf --height=18 --layout=reverse --preview='head {}'"
 alias vifz='vi $(fzf)'
+
+# Use neovim instead of vim
+alias vi=nvim
+alias vim=nvim
 
 alias lg=lazygit
 alias gds='find . -maxdepth 1 -type d | xargs -n 1 sh -c '\''cd "$0" && echo "$0" && git status 2>/dev/null'\'
